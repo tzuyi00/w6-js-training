@@ -18,9 +18,9 @@ git commit -m 'deploy'
 
 # 部署到 https://<USERNAME>.github.io
 
-git push -f git@github.com:tzuyi00/w6-js-training.git master:gh-pages
+git push -f https://github.com/tzuyi00/w6-js-training.git master:gh-pages
 
 cd -
 
-# 終端機執行
+# 用Git Bash執行
 # sh deploy.sh
