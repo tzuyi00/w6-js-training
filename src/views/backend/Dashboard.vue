@@ -1,5 +1,6 @@
 <template>
   <div>
+    <loading :active.sync="isLoading"></loading>
     後台
     <div id="nav">
       <router-link to="/admin/products">產品列表</router-link> |
@@ -17,11 +18,13 @@
 export default {
   data () {
     return {
+      isLoading: false,
       token: '',
       checkSuccess: false
     }
   },
   created () {
+    this.isLoading = true
     this.checkLogin()
   },
   methods: {
@@ -40,11 +43,13 @@ export default {
           api_token: this.token
         })
         .then((res) => {
+          this.isLoading = false
           // 登入沒有問題
           console.log(res)
           this.checkSuccess = true
         })
         .catch((error) => {
+          this.isLoading = false
           console.log('error', error.response)
           // 驗證失敗，返回登入頁，內層不需再重複驗證
           this.$router.push('/login')
