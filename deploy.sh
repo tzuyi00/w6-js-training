@@ -13,8 +13,8 @@ cd dist
 # echo 'www.example.com' > CNAME
 
 git init
-git add -A
-git commit -m 'deploy'
+git add .
+git commit -m "update `date +'%Y-%m-%d %H:%M:%S'`";
 
 # 部署到 https://<USERNAME>.github.io
 

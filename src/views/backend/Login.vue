@@ -41,12 +41,15 @@ export default {
         console.log(response)
         const { token } = response.data
         const { expired } = response.data
-
         // 將資料存入cookie
         document.cookie = `lizToken=${token}; expires=${new Date(expired * 1000)};`
-        this.$router.push('admin/products')
+        this.$bus.$emit('message:push', '登入成功', 'success')
+        // this.$router.push('admin/products')
       }).catch((error) => {
-        console.log(error)
+        this.$bus.$emit('message:push',
+          `登入失敗惹，好糗Σ( ° △ °|||)︴ ${error}`,
+          'danger')
+        console.log(error.response)
       })
     }
   }

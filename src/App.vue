@@ -6,6 +6,22 @@
   </div>
 </template>
 
+<script>
+import Toast from '@/components/Toasts.vue'
+
+export default {
+  name: 'App',
+  components: {
+    // eslint-disable-next-line vue/no-unused-components
+    Toast
+  },
+  data () {
+    return {
+    }
+  }
+}
+</script>
+
 <style lang="scss">
 @import '~bootstrap/scss/bootstrap';
 
