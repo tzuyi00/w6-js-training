@@ -1,0 +1,367 @@
+//== 捲軸效果的 extend
+%scrollbar-style {
+  &:hover {
+      &::-webkit-scrollbar-thumb {
+          background-color: $gray-900;
+      }
+  }
+
+  &::-webkit-scrollbar {
+      height: 4px;
+      width: 4px;
+      padding: 4px;
+      background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+      background-color: rgba(#aaa, .3);
+  }
+
+  &::-webkit-scrollbar-track {
+      background-color: transparent;
+  }
+}
+
+//== Nav Panel
+// 樣式變數可先拉到元件頁面的上方
+$zindex-navpanel: 1010 !default;
+$navpanel-background: #0948B3;
+$navpanel-width: 80px;
+$navpanel-hover-width: 140px;
+$navpanel-wrap-width: 200px;
+$navpanel-padding: 15px;
+$navpanel-padding-left: 30px;
+$navbar-height: 70px;
+$navpanel-link-trans: .3s;
+$icon-width: 55px;
+$icon-width-child: 24px;
+$z-depth-0: 0 1px 1.5px rgba(black, 0);
+$second-background: #f36b3c;
+
+
+
+// 定義容器的空間
+// --------------------------------------------------
+.navpanel {
+  position: relative;
+  padding-left: $navpanel-padding * 2;
+  padding-bottom: $navpanel-padding * 2;
+  padding-top: $navpanel-padding * 2;
+  // height: 100vh;
+
+  &.navpanel-fixed-left {
+      position: fixed;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      z-index: $zindex-navpanel;
+      transition: all .15s;
+  }
+}
+
+.navpanel-container {
+  position: relative;
+  // width: $navpanel-width;
+  width: $navpanel-hover-width;
+  height: 100%;
+  box-shadow: $box-shadow-sm;
+  border-radius: $border-radius-lg;
+  transition: width $navpanel-link-trans;
+
+  &:hover {
+      // width: $navpanel-hover-width;
+
+      .navpanel-text,
+      .navpanel_block,
+      .navpanel-child {
+          visibility: visible;
+      }
+  }
+
+  // 轉成 Flex 的樣式
+  &.navpanel-flex {
+      display: flex;
+      flex-direction: column;
+
+      .navpanel-brand {
+          text-align: center;
+          padding-bottom: $navpanel-padding * 1.5;
+          padding-top: $navpanel-padding * 1.5;
+      }
+
+      .navpanel-body {
+          flex: 1 1 auto;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-start;
+          // overflow-x: hidden;
+          // overflow-y: auto;
+          @extend %scrollbar-style;
+      }
+
+      .navpanel-footer {
+          text-align: center;
+          padding-bottom: $navpanel-padding * 2;
+          padding-top: $navpanel-padding * 2;
+          // border-top: 1px solid $secondary;
+      }
+  }
+}
+
+
+// navpanel nav
+// 內層元素的定義
+// --------------------------------------------------
+.navpanel-nav {
+  width: 100%;
+
+  .navpanel_block {
+      visibility: hidden;
+      white-space: nowrap;
+      color: $gray-500;
+      transition: all $navpanel-link-trans;
+  }
+
+  li:hover nav.second-nav,
+  .second-item:hover nav.third-nav {
+      display: block;
+  }
+
+  li:hover {
+      background-color: $orange;
+  }
+
+  li {
+      position: relative;
+
+      nav {
+          display: none;
+          position: absolute;
+          height: auto;
+          background-color: $second-background;
+          box-shadow: $box-shadow-sm;
+          top: 0;
+          border-radius: $border-radius-lg;
+          z-index: 2;
+      }
+
+      nav.second-nav,
+      nav.third-nav {
+          left: 135px;
+      }
+
+
+      .second-link,
+      .third-link {
+          white-space: nowrap;
+
+          .second-item {
+              position: relative;
+          }
+
+          .second-item a,
+          .third-item a {
+              color: #fff;
+              padding-left: 2rem;
+              padding-right: 2rem;
+          }
+
+          .second-item:hover,
+          .third-item:hover {
+              background-color: $orange;
+          }
+
+      }
+  }
+
+  a.navpanel-link {
+      display: flex;
+      padding-top: $nav-link-padding-y * 2;
+      padding-bottom: $nav-link-padding-y * 2;
+
+      &:hover {
+          text-decoration: none;
+      }
+
+      &:hover .navpanel-text {
+          color: #fff !important;
+      }
+  }
+
+  .navpanel-img {
+      position: relative;
+  }
+
+  .navpanel-child {
+      padding-left: $icon-width-child;
+      color: #6c757d;
+      // display: none;
+  }
+
+  .navpanel-text {
+      // visibility: hidden;
+      // display: none;
+      white-space: nowrap;
+      // padding-left: $icon-width;
+      margin: auto;
+      color: #fff;
+      transition: all $navpanel-link-trans;
+  }
+
+  // disabled
+  li.disabled>a,
+  li:disabled>a,
+  a.disabled,
+  a:disabled {
+      pointer-events: none;
+      cursor: not-allowed;
+      opacity: 0.65;
+  }
+
+  // show active
+  li.show ul,
+  li.active ul {
+      max-height: 600px;
+  }
+
+  li.show,
+  li.active {
+      >a>.navpanel-active-icon {
+          transform: rotate(90deg);
+      }
+  }
+}
+
+// 元素互動的控制器
+// --------------------------------------------------
+#rebody {
+  &.navbar-is-top {
+      padding-top: $navbar-height;
+
+      .navpanel-fixed-left {
+          top: 40px;
+      }
+
+      .navbar {
+          left: 0;
+      }
+  }
+}
+
+#rebody.has-navpanel-fixed {
+  padding-left: $navpanel-wrap-width;
+  padding-right: $navpanel-padding * 2;
+  transition: all .15s;
+
+  //if hide navpanel active
+  &.hide-navpanel {
+      padding-left: $navpanel-padding * 2;
+      padding-right: $navpanel-padding * 2;
+
+      .navpanel {
+          transform: translateX(-100%);
+      }
+
+      .navbar {
+          left: 0;
+      }
+  }
+}
+
+.has-navpanel-container {
+  padding-left: $navpanel-width;
+}
+
+/* navpanel style
+| 主題
+| --------------------------------------------------
+*/
+
+// 亮色主題
+.navbar-light {
+  color: $gray-800;
+  background-color: $main-bg;
+}
+
+.navpanel-light {
+  color: $gray-900;
+  background-color: $navpanel-background;
+
+  .navpanel-link {
+      img {
+          position: absolute;
+          top: 0;
+          left: 12px;
+          transition: opacity $navpanel-link-trans;
+
+          &:last-child {
+              opacity: 0;
+          }
+      }
+
+      &:hover,
+      &:focus,
+      &.active {
+          img:first-child {
+              opacity: 0;
+          }
+
+          img:last-child {
+              opacity: 1;
+          }
+
+          .navpanel-text {
+              text-decoration: none;
+          }
+      }
+  }
+}
+
+
+/* media
+| 小此寸:
+| lg以下的此寸 navpanel 預設為收起
+| 並且打開時 .has-navpanel-left 整體往右移
+| --------------------------------------------------
+*/
+
+@include media-breakpoint-down(lg) {
+
+  #rebody.has-navpanel-fixed {
+      padding-left: $navpanel-padding * 2;
+      padding-right: $navpanel-padding * 2;
+      transition: all .15s;
+
+      .has-navpanel-left {
+          transition: transform .15s;
+      }
+
+      .navpanel {
+          transform: translateX(-100%);
+      }
+
+      //if show navpanel active
+      &.hide-navpanel {
+          .navpanel {
+              transform: translateX(0%);
+          }
+
+          .navbar {
+              left: 0;
+          }
+
+          .has-navpanel-left {
+              transform: translate3d(215px, 0, 0);
+          }
+      }
+  }
+
+  .navpanel-container {
+      width: $navpanel-hover-width;
+
+      .navpanel-text {
+          visibility: visible;
+      }
+  }
+}

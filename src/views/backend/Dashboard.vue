@@ -1,21 +1,36 @@
 <template>
-  <div>
+  <div id="rebody" class="bg-main-bg has-navpanel-left has-navpanel-fixed navbar-is-top">
     <loading :active.sync="isLoading"></loading>
-    後台
-    <div id="nav">
-      <router-link to="/admin/products">產品列表</router-link> |
-      <router-link to="/admin/coupons">優惠券列表</router-link> |
-      <router-link to="/admin/orders">訂單列表</router-link> |
-      <router-link to="/admin/pictures">圖片儲存列表</router-link> |
-      <router-link to="/">回到前台</router-link> |
-      <a href="#" @click.prevent="signout">登出</a>
+    <!--navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light pt-4">
+      <div class="d-flex justify-content-between w-100">
+        <a href="#" class="hide-navpanel-btn my-auto" @click.prevent="hidenavpanel">
+          <i class="fa fa-bars text-primary fa-lg"></i>
+        </a>
+        <div class="h4 font-weight-bold my-auto">後台</div>
+        <div class="my-auto mr-3">
+          <i class="fas fa-user"></i> 管理員你好
+        </div>
+      </div>
+    </nav>
+    <Navpanel />
+    <div class="has-navpanel-left border-top pt-3 mb-4">
+
+      <router-view :token-receive="token" v-if="checkSuccess" />
     </div>
-    <router-view :token-receive="token" v-if="checkSuccess" />
   </div>
 </template>
 
 <script>
+import Navpanel from '@/components/Navpanel.vue'
+
+/* global $ */
+
 export default {
+  name: 'Dashboard',
+  components: {
+    Navpanel
+  },
   data () {
     return {
       isLoading: false,
@@ -28,6 +43,9 @@ export default {
     this.checkLogin()
   },
   methods: {
+    hidenavpanel () {
+      $('#rebody').toggleClass('hide-navpanel')
+    },
     // 確認 Token 狀態
     checkLogin () {
       this.token = document.cookie.replace(
