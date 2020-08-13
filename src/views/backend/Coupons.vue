@@ -67,6 +67,7 @@
           :due_date="due_date"
           :due_time="due_time"
           @update="getCoupons"
+          v-if="isModalShow"
         />
 
         <!-- <Delete :temp-product="tempCoupon" :del-name="delName" @update="getProducts" /> -->
@@ -94,7 +95,8 @@ export default {
       due_date: '',
       due_time: '',
       pagination: {},
-      isNew: false,
+      isNew: false, // 判斷是新增產品(true)或編輯產品(false)。
+      isModalShow: false, // 判斷是否要讓 CouponModal 開啟。
       loadingBtn: '',
       delName: '優惠券'
     }
@@ -120,8 +122,11 @@ export default {
           this.tempCoupon = {}
           this.due_date = ''
           this.due_time = ''
-          this.isNew = true // 切換狀態為 true 代表新增
-          $('#couponModal').modal('show')
+          this.isNew = true
+          this.isModalShow = true
+          setTimeout(() => {
+            $('#couponModal').modal('show')
+          }, 0)
           break
         }
         case 'edit': {
@@ -135,14 +140,15 @@ export default {
             // 使用 split 切割相關時間戳
             const dedlineAt = this.tempCoupon.deadline.datetime.split(' ');
             [this.due_date, this.due_time] = dedlineAt // 日期
-
-            $('#couponModal').modal('show') // 確保資料已經回寫後再打開 Modal
+            this.isModalShow = true
+          }).then((res) => {
+            $('#couponModal').modal('show')
             this.loadingBtn = '' // 清除loading畫面
           }).catch((error) => {
             console.log(error)
           })
 
-          this.isNew = false// 切換狀態為 false 代表編輯
+          this.isNew = false
           break
         }
         case 'delete': {

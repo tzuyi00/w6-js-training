@@ -7,6 +7,7 @@
     aria-labelledby="exampleModalLabel"
     aria-hidden="true"
   >
+  <loading :active.sync="isLoading"></loading>
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -85,7 +86,9 @@
 export default {
   name: 'CouponModal',
   props: {
-    tempCoupon: {},
+    tempCoupon: {
+      deadline_at: 0
+    },
     isNew: Boolean,
     due_date: String,
     due_time: String
@@ -117,7 +120,7 @@ export default {
 
       // 針對日期做組合重新寫入到物件中
       // 日期格式 Y-m-d H:i:s，例如：「2020-06-16 09:31:18」
-      this.tempCoupon.deadline.datetime = `${this.new_date} ${this.new_time}`
+      this.tempCoupon.deadline_at = `${this.new_date} ${this.new_time}`
 
       // 用 httpMethod 帶入是用post還是patch
       this.$http[httpMethod](api, this.tempCoupon).then(() => {
