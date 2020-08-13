@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import Navpanel from '@/components/Navpanel.vue'
+import Navpanel from '@/components/backend/Navpanel.vue'
 
 /* global $ */
 

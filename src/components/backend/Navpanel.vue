@@ -36,7 +36,7 @@
         <footer class="navpanel-footer border-top">
             <div>
                 <a href="#" @click.prevent="signout">
-                    <img src="../assets/logout.svg" width="25">
+                    <img src="../../assets/logout.svg" width="25">
                 </a>
             </div>
         </footer>
@@ -54,7 +54,7 @@ export default {
   methods: {
     signout () {
       document.cookie = 'lizToken=;expires=;'
-      this.$bus.$emit('message:push', '登出成功', 'success')
+      this.$bus.$emit('message:push', '登出成功 (ゝ∀･)b', 'success')
       // console.log('token 已清除')
       this.$router.push('/login')
     }

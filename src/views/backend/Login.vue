@@ -58,12 +58,12 @@ export default {
         // 將資料存入cookie
         document.cookie = `lizToken=${token}; expires=${new Date(expired * 1000)};`
 
-        this.$bus.$emit('message:push', '登入成功', 'success')
+        this.$bus.$emit('message:push', '登入成功 ヾ(●゜▽゜●)♡', 'success')
 
         this.$router.push('admin/products')
       }).catch((error) => {
         this.$bus.$emit('message:push',
-          `登入失敗惹，好糗Σ( ° △ °|||)︴ ${error}`,
+          '登入失敗，好糗 Σ( ° △ °|||)︴ ',
           'danger')
         console.log(error.response)
       })

@@ -16,8 +16,8 @@
           style="width: 20px; height: 20px"
           :class="`bg-${ item.status }`"
         />
-        <strong class="mr-auto">六角實戰班</strong>
-        <small>現在</small>
+        <strong class="mr-auto">light bakery</strong>
+        <!-- <small>現在</small> -->
         <button
           type="button"
           class="ml-2 mb-1 close"
