@@ -136,24 +136,38 @@ export default {
     updateProduct () {
       console.log(this.isNew)
       this.isLoading = true
+
       let api = ''
       let httpMethod = ''
+      let status = ''
+
       if (this.isNew) {
         // 新增商品
         api = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/product`
         httpMethod = 'post'
+        status = '新增成功囉，好棒ヽ(＾Д＾)ﾉ '
       } else {
         // 編輯商品
         api = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/product/${this.tempProduct.id}`
         httpMethod = 'patch'
+        status = '更新成功囉，好棒ヽ(＾Д＾)ﾉ '
       }
 
       // 用 httpMethod 帶入是用post還是patch
-      this.$http[httpMethod](api, this.tempProduct).then(() => {
-        // console.log(res)
+      this.$http[httpMethod](api, this.tempProduct).then((response) => {
+        console.log(response)
         this.isLoading = false
         $('#productModal').modal('hide')
-        this.$emit('update') // 更新畫面
+
+        if (response.status === 200) {
+          this.$bus.$emit('message:push', status, 'success')
+          this.$emit('update') // 更新畫面
+        } else {
+          this.$bus.$emit('message:push',
+            `出現錯誤惹，好糗Σ( ° △ °|||)︴
+            ${response.data.message}`,
+            'danger')
+        }
       }).catch((error) => {
         this.isLoading = false
         console.log(error.response.data.errors)

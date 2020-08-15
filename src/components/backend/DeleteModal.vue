@@ -1,6 +1,6 @@
 <template>
   <div
-    id="delProductModal"
+    id="delModal"
     class="modal fade"
     tabindex="-1"
     role="dialog"
@@ -50,12 +50,32 @@ export default {
   methods: {
     delProduct () {
       this.isLoading = true
-      const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/product/${this.tempProduct.id}`
+      let url = ''
+      switch (this.delName) {
+        case '商品': {
+          url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/product/${this.tempProduct.id}`
+          break
+        }
+        case '優惠券': {
+          url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/coupon/${this.tempProduct.id}`
+          break
+        }
+        case '圖片': {
+          url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/storage/${this.tempProduct.id}`
+          break
+        }
+        default:
+          break
+      }
 
       this.$http.delete(url).then(() => {
         this.isLoading = false
-        $('#delProductModal').modal('hide') // 刪除成功後關閉 Modal
+        this.$bus.$emit('message:push', `${this.delName}刪除成功囉，好棒ヽ(＾Д＾)ﾉ `, 'success')
+        $('#delModal').modal('hide') // 刪除成功後關閉 Modal
         this.$emit('update') // 重新取得全部資料(更新畫面)
+      }).catch((error) => {
+        this.isLoading = false
+        console.log(error.response.data.errors)
       })
     }
   }

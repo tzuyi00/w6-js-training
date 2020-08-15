@@ -22,7 +22,7 @@
                   </router-link>
                 </li>
                 <li>
-                  <router-link to="/admin/pictures" class="navpanel-link">
+                  <router-link to="/admin/storages" class="navpanel-link">
                     <span class="navpanel-text">圖片儲存列表</span>
                   </router-link>
                 </li>

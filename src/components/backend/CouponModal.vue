@@ -17,8 +17,11 @@
           </button>
         </div>
         <div class="modal-body">
-          <div class="form-group">
+          <span class="text-danger float-right" v-if="isNew">*必填</span>
+          <div class="form-group mt-2">
             <label for="title">標題</label>
+            <span class="text-danger ml-1"
+            v-if="isNew">*</span>
             <input
               id="title"
               v-model="tempCoupon.title"
@@ -29,6 +32,8 @@
           </div>
           <div class="form-group">
             <label for="coupon_code">優惠碼</label>
+            <span class="text-danger ml-1"
+            v-if="isNew">*</span>
             <input
               id="coupon_code"
               v-model="tempCoupon.code"
@@ -39,14 +44,20 @@
           </div>
           <div class="form-group">
             <label for="due_date">到期日</label>
-            <input id="due_date" v-model="new_date" type="date" class="form-control" />
+            <span class="text-danger ml-1"
+            v-if="isNew">*</span>
+            <input id="due_date" v-model="tempCoupon.due_date" type="date" class="form-control" />
           </div>
           <div class="form-group">
             <label for="due_time">到期時間</label>
-            <input id="due_time" v-model="new_time" type="time" step="1" class="form-control" />
+            <span class="text-danger ml-1"
+            v-if="isNew">*</span>
+            <input id="due_time" v-model="tempCoupon.due_time" type="time" step="1" class="form-control" />
           </div>
           <div class="form-group">
             <label for="price">折扣百分比</label>
+            <span class="text-danger ml-1"
+            v-if="isNew">*</span>
             <input
               id="price"
               v-model="tempCoupon.percent"
@@ -89,15 +100,11 @@ export default {
     tempCoupon: {
       deadline_at: 0
     },
-    isNew: Boolean,
-    due_date: String,
-    due_time: String
+    isNew: Boolean
   },
   data () {
     return {
-      isLoading: false,
-      new_date: this.due_date,
-      new_time: this.due_time
+      isLoading: false
     }
   },
   methods: {
@@ -107,27 +114,38 @@ export default {
 
       let api = ''
       let httpMethod = ''
+      let status = ''
 
       if (this.isNew) {
         // 新增商品
         api = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/coupon`
         httpMethod = 'post'
+        status = '新增成功囉，好棒ヽ(＾Д＾)ﾉ '
       } else {
         // 編輯商品
         api = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/coupon/${this.tempCoupon.id}`
         httpMethod = 'patch'
+        status = '更新成功囉，好棒ヽ(＾Д＾)ﾉ '
       }
 
       // 針對日期做組合重新寫入到物件中
       // 日期格式 Y-m-d H:i:s，例如：「2020-06-16 09:31:18」
-      this.tempCoupon.deadline_at = `${this.new_date} ${this.new_time}`
+      this.tempCoupon.deadline_at = `${this.tempCoupon.due_date} ${this.tempCoupon.due_time}`
 
       // 用 httpMethod 帶入是用post還是patch
-      this.$http[httpMethod](api, this.tempCoupon).then(() => {
-        // console.log(res)
+      this.$http[httpMethod](api, this.tempCoupon).then((response) => {
         this.isLoading = false
         $('#couponModal').modal('hide')
-        this.$emit('update') // 更新畫面
+
+        if (response.status === 200) {
+          this.$bus.$emit('message:push', status, 'success')
+          this.$emit('update') // 更新畫面
+        } else {
+          this.$bus.$emit('message:push',
+            `出現錯誤惹，好糗Σ( ° △ °|||)︴
+            ${response.data.message}`,
+            'danger')
+        }
       }).catch((error) => {
         this.isLoading = false
         console.log(error.response.data.errors)

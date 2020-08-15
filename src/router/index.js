@@ -59,8 +59,8 @@ const routes = [
         component: () => import('../views/backend/Orders.vue')
       },
       {
-        path: 'pictures',
-        component: () => import('../views/backend/Pictures.vue')
+        path: 'storages',
+        component: () => import('../views/backend/Storages.vue')
       }
     ]
   },

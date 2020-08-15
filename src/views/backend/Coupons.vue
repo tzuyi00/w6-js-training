@@ -64,13 +64,10 @@
         <CouponModal
           :temp-coupon="tempCoupon"
           :is-new="isNew"
-          :due_date="due_date"
-          :due_time="due_time"
           @update="getCoupons"
-          v-if="isModalShow"
         />
 
-        <!-- <Delete :temp-product="tempCoupon" :del-name="delName" @update="getProducts" /> -->
+        <DeleteModal :temp-product="tempCoupon" :del-name="delName" @update="getCoupons" />
       </div>
     </div>
   </div>
@@ -80,23 +77,25 @@
 /* global $ */
 import Pagination from '@/components/Pagination.vue'
 import CouponModal from '@/components/backend/CouponModal.vue'
+import DeleteModal from '@/components/backend/DeleteModal.vue'
 
 export default {
   name: 'Coupons',
   components: {
     Pagination,
-    CouponModal
+    CouponModal,
+    DeleteModal
   },
   data () {
     return {
       isLoading: false,
       coupons: [],
-      tempCoupon: {},
-      due_date: '',
-      due_time: '',
+      tempCoupon: {
+        due_date: '',
+        due_time: ''
+      },
       pagination: {},
-      isNew: false, // 判斷是新增產品(true)或編輯產品(false)。
-      isModalShow: false, // 判斷是否要讓 CouponModal 開啟。
+      isNew: false, // 判斷是新增(true)或編輯(false)。
       loadingBtn: '',
       delName: '優惠券'
     }
@@ -120,13 +119,8 @@ export default {
       switch (modalStatus) {
         case 'new': {
           this.tempCoupon = {}
-          this.due_date = ''
-          this.due_time = ''
           this.isNew = true
-          this.isModalShow = true
-          setTimeout(() => {
-            $('#couponModal').modal('show')
-          }, 0)
+          $('#couponModal').modal('show')
           break
         }
         case 'edit': {
@@ -139,8 +133,7 @@ export default {
 
             // 使用 split 切割相關時間戳
             const dedlineAt = this.tempCoupon.deadline.datetime.split(' ');
-            [this.due_date, this.due_time] = dedlineAt // 日期
-            this.isModalShow = true
+            [this.tempCoupon.due_date, this.tempCoupon.due_time] = dedlineAt // 日期
           }).then((res) => {
             $('#couponModal').modal('show')
             this.loadingBtn = '' // 清除loading畫面
@@ -153,7 +146,7 @@ export default {
         }
         case 'delete': {
           this.tempCoupon = Object.assign({}, item) // 由於目前範本僅有一層物件，因此使用淺拷貝
-          $('#delProductModal').modal('show')
+          $('#delModal').modal('show')
           break
         }
         default: {

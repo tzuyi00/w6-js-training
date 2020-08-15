@@ -137,7 +137,7 @@ export default {
         }
         case 'delete': {
           this.tempProduct = Object.assign({}, item) // 由於目前範本僅有一層物件，因此使用淺拷貝
-          $('#delProductModal').modal('show')
+          $('#delModal').modal('show')
           break
         }
         default: {
