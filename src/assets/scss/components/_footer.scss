@@ -1,0 +1,68 @@
+footer {
+  margin-top: 100px;
+
+  .contactUs {
+    position: relative;
+    height: 550px;
+
+    .contactTxt {
+      padding-right: 100px;
+      padding-top: 75px;
+      background-color: $primdark;
+      color: #ffffff;
+
+      .contactDetail {
+        width: 280px;
+
+        .title {
+          color: #ffffff;
+        }
+
+        .line {
+          width: 150px;
+        }
+
+      }
+
+      .contactForm {
+        font-family:"Microsoft JhengHei";
+        position: absolute;
+        background-color: rgba($color: #fff, $alpha: 0.9);
+        width: 100%;
+        z-index: 2;
+        top: 75px;
+        left: 95%;
+        color: $primdark;
+        text-align: left;
+      }
+
+
+    }
+
+    @media (max-width: 767.98px) {
+      .contactTxt {
+        padding: 50px 30px;
+
+        .contactDetail{
+          width: 100%;
+        }
+
+        .contactForm {
+          position: initial;
+        }
+      }
+
+    }
+
+    .contactImg {
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+
+  .underLine{
+    background-color: #fff;
+    color: $dark;
+  }
+}

@@ -15,6 +15,7 @@
             <th scope="col">#</th>
             <th scope="col">分類</th>
             <th scope="col">品名</th>
+            <th scope="col">圖片縮圖</th>
             <th scope="col" class="text-right">原價</th>
             <th scope="col" class="text-right">售價</th>
             <th scope="col" class="text-center">是否啟用</th>
@@ -26,6 +27,13 @@
             <th scope="row">{{index + 1}}</th>
             <td>{{ item.category }}</td>
             <td>{{ item.title }}</td>
+            <td>
+              <img
+                :src="item.imageUrl[0]"
+                width="100px"
+                class="img-fluid"
+              >
+            </td>
             <td class="text-right">{{ item.origin_price }}</td>
             <td class="text-right">{{ item.price}}</td>
             <td class="text-center">

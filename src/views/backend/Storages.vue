@@ -14,8 +14,9 @@
         <table class="table table-hover">
           <thead>
             <tr>
-              <th scope="col">#</th>
-              <th scope="col">圖片縮圖</th>
+              <th scope="col" width="20px">#</th>
+              <th scope="col" width="110px">圖片縮圖</th>
+              <th scope="col">網址</th>
               <th scope="col" class="text-center">編輯</th>
             </tr>
           </thead>
@@ -29,6 +30,7 @@
                   class="img-fluid"
                 >
               </td>
+              <td style="max-width:200px">{{item.path}}</td>
               <td class="text-center">
                 <div class="btn-group">
                   <button
@@ -81,7 +83,7 @@ export default {
   },
   methods: {
     getStorages (page = 1) {
-      const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/storage?page=${page}&paged=10`
+      const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/storage?page=${page}&paged=20`
 
       this.$http.get(url).then((response) => {
         console.log(response)

@@ -43,7 +43,43 @@
 // @import "~bootstrap/scss/print";
 
 // components
+// backend
 @import "./components/_navpanel";
 @import "./components/_card";
+// frontend
+@import "./components/_nav";
+@import "./components/_footer";
+@import "./components/_index";
+@import "./components/_products";
+@import "./components/_product";
+@import "./components/_banner";
+@import "./components/_payment";
 
-@import "./_all";
+a {
+  color: $body-color;
+}
+a:hover{
+  color: $info;
+  text-decoration: none;
+}
+
+.title{
+  font-family: 'Marcellus SC',serif;
+}
+
+.bg-main-bg {
+  background-color: #F5F8FB !important;
+}
+
+.hide-navpanel-btn {
+  margin-left: 4.6rem;
+}
+
+.line{
+  height: 5px;
+  background-color: $primary;
+}
+
+.breadcrumb{
+  background-color: transparent;
+}

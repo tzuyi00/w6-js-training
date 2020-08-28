@@ -1,0 +1,64 @@
+.banner {
+  margin-top: 80px;
+  height: 300px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 0% 53%;
+  position: relative;
+
+  .bannerTitle {
+    width: 300px;
+    height: 90px;
+    background-color: rgba($primdark, 0.7);
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    transform: scaleX(0);
+    animation: bannerTitle 2s 0.5s forwards;
+
+    h1 {
+      width: 100%;
+      position: absolute;
+      line-height: 90px;
+      text-align: center;
+      font-size: 30px;
+      color: #fff;
+      letter-spacing: 2px;
+    }
+  }
+}
+
+@media (max-width: 767.98px) {
+  .banner {
+    height: 300px;
+
+    .bannerTitle {
+      width: 200px;
+      height: 90px;
+
+      h1 {
+        line-height: 90px;
+        font-size: 26px;
+      }
+    }
+  }
+}
+
+@media (max-width: 575.98px) {
+  .banner {
+    height: 150px;
+
+    .bannerTitle {
+      width: 180px;
+      height: 70px;
+
+      h1 {
+        line-height: 70px;
+        font-size: 22px;
+      }
+    }
+  }
+}

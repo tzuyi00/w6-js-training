@@ -66,14 +66,16 @@ $colors: map-merge(
   $colors
 );
 
-$primary:       $blue !default;
+$primary:       #A17B62 !default;
+$primdark:      #43210C !default;
 $secondary:     $gray-600 !default;
-$success:       $green !default;
-$info:          $cyan !default;
+$success:       #639d4e !default;
+$info:          #d9794d !default;
 $warning:       $yellow !default;
 $danger:        $red !default;
 $light:         $gray-100 !default;
 $dark:          $gray-800 !default;
+
 $main-bg:     #F5F8FB !default;
 
 $theme-colors: () !default;
@@ -172,7 +174,7 @@ $sizes: map-merge(
 // Settings for the `<body>` element.
 
 $body-bg:                   $white !default;
-$body-color:                $gray-900 !default;
+$body-color:                $primdark !default;
 
 
 // Links
@@ -448,7 +450,7 @@ $btn-link-disabled-color:     $gray-600 !default;
 $btn-block-spacing-y:         .5rem !default;
 
 // Allows for customizing button radius independently from global border radius
-$btn-border-radius:           $border-radius !default;
+$btn-border-radius:           3px !default;
 $btn-border-radius-lg:        $border-radius-lg !default;
 $btn-border-radius-sm:        $border-radius-sm !default;
 

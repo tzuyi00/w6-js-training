@@ -17,7 +17,6 @@
           :class="`bg-${ item.status }`"
         />
         <strong class="mr-auto">light bakery</strong>
-        <!-- <small>現在</small> -->
         <button
           type="button"
           class="ml-2 mb-1 close"
@@ -42,13 +41,7 @@ export default {
   name: 'Toasts',
   data () {
     return {
-      messages: [
-        // {
-        //   message: '你好嗎',
-        //   status: 'success',
-        //   timestamp: Math.floor(new Date() / 1000)
-        // }
-      ]
+      messages: []
     }
   },
   created () {
