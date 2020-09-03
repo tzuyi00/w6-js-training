@@ -26,7 +26,10 @@
             <i class="fa fa-shopping-cart"></i>
             <span class="badge badge-pill badge-danger" v-if="cart.length">{{cart.length}}</span>
           </a>
-          <div class="dropdown-menu dropdown-menu-right">
+          <!-- <div v-if="!cart.length" class="dropdown-menu dropdown-menu-right">
+            <h5 class="itemTitle text-center my-2">您尚未選擇商品</h5>
+          </div> -->
+          <div v-if="cart.length" class="dropdown-menu dropdown-menu-right">
             <h5 class="itemTitle text-center my-2">已選擇商品</h5>
             <div class="cart-scroll">
               <table class="itemContent">
@@ -53,7 +56,7 @@
                 小計
                 <span class="text-info h4 ml-5">${{ cartTotal }}</span>
               </p>
-              <router-link to="/payment" class="payBtn">
+              <router-link to="/cart" class="payBtn">
                 <button class="btn btn-info">
                   <i class="fa fa-shopping-cart"></i> 結帳去
                 </button>
@@ -82,6 +85,9 @@ export default {
     const vm = this
     vm.$bus.$on('add-cart', (item, quantity) => {
       vm.addToCart(item, quantity)
+    })
+    vm.$bus.$on('nav-getCart', () => {
+      vm.getCart()
     })
   },
   methods: {

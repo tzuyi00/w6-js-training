@@ -24,24 +24,19 @@ const routes = [
         component: () => import('../views/frontend/Product.vue')
       },
       {
-        path: 'cart',
-        name: '購物車',
-        component: () => import('../views/frontend/Cart.vue')
-      },
-      {
         path: 'coupon',
         name: '優惠券',
         component: () => import('../views/frontend/Coupon.vue')
       },
       {
-        path: 'payment',
-        name: '',
-        component: () => import('../views/frontend/Payment.vue')
+        path: 'cart',
+        name: '購物車',
+        component: () => import('../views/frontend/Cart.vue')
       },
-      {
-        path: 'paymentok',
-        name: '',
-        component: () => import('../views/frontend/Paymentok.vue')
+      { // 動態路由
+        path: 'payment/:orderId',
+        name: '訂單完成',
+        component: () => import('../views/frontend/Payment.vue')
       }
     ]
   },

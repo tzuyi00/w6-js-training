@@ -16,7 +16,7 @@
 }
 
 .pdImg:after {
-  background: #fff8ec;
+  background: $egg;
   bottom: -50px;
   content: "";
   left: -500px;
@@ -86,7 +86,6 @@
       -webkit-appearance: none;
       margin: 0;
     }
-
   }
   
 }

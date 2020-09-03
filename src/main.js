@@ -3,6 +3,12 @@ import Vue from 'vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import jquery from 'jquery'
+import {
+  ValidationObserver,
+  ValidationProvider, configure, localize, extend
+} from 'vee-validate' // 驗證套件
+import * as rules from 'vee-validate/dist/rules' // 規則檔案（ex: email...）
+import zhTW from 'vee-validate/dist/locale/zh_TW.json' // 語系檔案
 import 'bootstrap'
 // Bus
 import './bus'
@@ -19,6 +25,27 @@ Vue.use(VueAxios, axios)
 
 // Loading元件，全域註冊，為屬性，比較簡易
 Vue.component('Loading', Loading)
+
+// vee-validate 所有驗證規則
+Object.keys(rules).forEach((rule) => {
+  extend(rule, rules[rule])
+})
+
+// 自定義設定檔案，錯誤的 className
+configure({
+  classes: {
+    valid: 'is-valid',
+    invalid: 'is-invalid'
+  }
+})
+
+// 載入自訂規則包
+localize('tw', zhTW) // 中文語系
+
+// 將 VeeValidate 完整表單 驗證工具載入 作為全域註冊
+Vue.component('ValidationObserver', ValidationObserver)
+// 將 VeeValidate input 驗證工具載入 作為全域註冊
+Vue.component('ValidationProvider', ValidationProvider)
 
 new Vue({
   router,

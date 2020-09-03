@@ -9,15 +9,17 @@
             <h2 class="title">Contact Us</h2>
             <div class="line"></div>
             <p class="mt-4">
-              如有任何問題或商品合作洽談，請留下訊息讓我們知道！
-              若是對商店有任何建議與回饋，也歡迎留言，
-              讓我們能夠為您提供更好的購物體驗！
+              感謝您對 HomeTown 的支持與愛護，如有任何問題或商品合作洽談，
+              歡迎提出意見及回饋，我們將用心聆聽，並以最快速度回應，為您提供更好的服務。
             </p>
           </div>
 
           <form class="contactForm shadow p-3 p-md-5">
             <div class="form-group">
               <input type="text" class="form-control" id placeholder="Name 姓名" />
+            </div>
+            <div class="form-group">
+              <input type="tel" class="form-control" id placeholder="Phone 電話" />
             </div>
             <div class="form-group">
               <input type="email" class="form-control" id placeholder="Email 信箱" />
@@ -36,7 +38,7 @@
         ></div>
       </div>
       <div class="container underLine py-2 text-center">
-        HomeTown Designed by Liz.Lin ⓒ 2020 All Right Reserved. ｜僅個人作品練習，無任何商業用途
+        HomeTown Designed by Liz.Lin ⓒ 2020 All Right Reserved. ｜僅個人作品練習，無商業用途
         <router-link to="/login">
           <i class="fas fa-user-cog"></i>
         </router-link>
