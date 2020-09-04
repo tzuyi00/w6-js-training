@@ -18,7 +18,7 @@ git commit -m "update `date +'%Y-%m-%d %H:%M:%S'`";
 
 # 部署到 https://<USERNAME>.github.io
 
-git push -f https://github.com/tzuyi00/w6-js-training.git master:gh-pages
+git push -f https://github.com/tzuyi00/HomeTown.git master:gh-pages
 
 cd -
 

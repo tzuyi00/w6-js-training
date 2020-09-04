@@ -1,4 +1,4 @@
-# w6-js-training
+# HomeTown
 
 ## Project setup
 ```
