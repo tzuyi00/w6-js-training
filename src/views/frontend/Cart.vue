@@ -61,7 +61,7 @@
                   <i class="fas fa-plus"></i>
                 </button>
               </td>
-              <td>${{item.product.price}}</td>
+              <td>{{item.product.price | currency}}</td>
               <td class="trashIcon" @click="removeCartItem(item.product.id)">
                 <i class="far fa-trash-alt"></i>
               </td>
@@ -81,15 +81,15 @@
           <tbody>
             <tr>
               <td>總計金額</td>
-              <td class="text-right text-info">NT ${{ cartTotal }}</td>
+              <td class="text-right text-info">NT {{ cartTotal  | currency}}</td>
             </tr>
             <tr v-if="coupon.enabled">
               <td>優惠折抵</td>
-              <td class="text-right">- NT ${{ cartTotal - cartTotal * (coupon.percent / 100) }}</td>
+              <td class="text-right">- NT {{ cartTotal - cartTotal * (coupon.percent / 100)  | currency}}</td>
             </tr>
             <tr v-if="coupon.enabled">
               <td>應付金額</td>
-              <td class="text-right text-danger">NT ${{ cartTotal * (coupon.percent / 100) }}</td>
+              <td class="text-right text-danger">NT {{ cartTotal * (coupon.percent / 100)  | currency}}</td>
             </tr>
           </tbody>
         </table>
@@ -126,18 +126,18 @@
               </td>
               <td>{{item.product.title}}</td>
               <td class="text-center">x{{ item.quantity }}</td>
-              <td class="text-right">${{item.product.price}}</td>
+              <td class="text-right">{{item.product.price | currency}}</td>
             </tr>
           </tbody>
           <tfoot>
             <tr v-if="coupon.enabled">
               <td colspan="3" class="text-right py-3">優惠折抵</td>
-              <td class="text-right">- NT ${{ cartTotal - cartTotal * (coupon.percent / 100) }}</td>
+              <td class="text-right">- NT {{ cartTotal - cartTotal * (coupon.percent / 100)  | currency}}</td>
             </tr>
             <tr>
               <td colspan="3" class="text-right" :class="{ isCoupon: coupon.enabled }">總計</td>
-              <td v-if="!coupon.enabled" class="text-right text-danger"  :class="{ isCoupon: coupon.enabled }">NT ${{ cartTotal }}</td>
-              <td v-if="coupon.enabled" class="text-right text-danger"  :class="{ isCoupon: coupon.enabled }">NT ${{ cartTotal * (coupon.percent / 100) }}</td>
+              <td v-if="!coupon.enabled" class="text-right text-danger"  :class="{ isCoupon: coupon.enabled }">NT {{ cartTotal  | currency}}</td>
+              <td v-if="coupon.enabled" class="text-right text-danger"  :class="{ isCoupon: coupon.enabled }">NT {{ cartTotal * (coupon.percent / 100)  | currency}}</td>
             </tr>
           </tfoot>
         </table>

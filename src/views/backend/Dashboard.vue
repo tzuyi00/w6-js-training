@@ -5,9 +5,12 @@
     <nav class="navbar navbar-expand-lg fixed-top navbar-light pt-4">
       <div class="d-flex justify-content-between w-100">
         <a href="#" class="hide-navpanel-btn my-auto" @click.prevent="hidenavpanel">
-          <i class="fa fa-bars text-primary fa-lg"></i>
+          <i class="fa fa-bars fa-lg"></i>
         </a>
-        <div class="h4 font-weight-bold my-auto">後台</div>
+        <div class="back-brand d-flex align-items-center">
+          <img class="logoImg" src="@/assets/img/logoTop.png" alt="logoTop" />
+          <span class="logoTxt">HomeTown</span>
+        </div>
         <div class="my-auto mr-3">
           <i class="fas fa-user"></i> 管理員你好
         </div>

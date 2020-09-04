@@ -43,7 +43,7 @@
                     </td>
                     <td class="itemName">{{ item.product.title }}</td>
                     <td>x{{ item.quantity }}</td>
-                    <td class="text-info">${{ item.product.price }}</td>
+                    <td class="text-info">{{ item.product.price | currency }}</td>
                     <td class="trashIcon" @click="removeCartItem(item.product.id)">
                       <i class="far fa-trash-alt"></i>
                     </td>
@@ -54,7 +54,7 @@
             <div class="totalInfo">
               <p>
                 小計
-                <span class="text-info h4 ml-5">${{ cartTotal }}</span>
+                <span class="text-info h4 ml-5">{{ cartTotal | currency }}</span>
               </p>
               <router-link to="/cart" class="payBtn">
                 <button class="btn btn-info">

@@ -33,8 +33,8 @@
               <router-link :to="`/product/${item.id}`">
                 <h4>{{ item.title }}</h4>
               </router-link>
-              <del class="h6 text-secondary mb-0">NT${{ item.origin_price }}</del>
-              <div class="h5 text-info">NT${{ item.price }}</div>
+              <del class="h6 text-secondary mb-0">NT{{ item.origin_price | currency }}</del>
+              <div class="h5 text-info">NT{{ item.price | currency }}</div>
               <!-- <div class="cateTag">{{ item.category }}</div> -->
               <i class="fas fa-cart-plus cart" @click="updateCart(item)"></i>
             </div>

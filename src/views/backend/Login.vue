@@ -1,13 +1,15 @@
 <template>
   <div class="container-fluid bg-main-bg" style="width: 100vw; height: 100vh;">
-    <!-- <div class="text-center">
-      <img src="{{ asset('images/logo_new.svg') }}" width="170" alt="logo" class="mb-3">
-      <h1 class="h5 pb-2 mb-4">{{ $title }}</h1>
-    </div> -->
-    <div class="d-flex justify-content-center">
-      <div class="card" style="margin-top: 8rem;">
+
+    <div class="d-flex flex-column align-items-center">
+      <div class="back-brand text-center mb-3" style="margin-top: 8rem;">
+        <img class="logoImg" src="@/assets/img/logoTop.png" alt="logoTop" />
+        <div class="logoTxt">HomeTown</div>
+      </div>
+      <div class="card" style="width: 340px;">
         <div class="card-body">
-          <h1 class="h5 pb-2"> <strong>後台登入</strong> </h1>
+          <div class="h5 text-center"> <strong>後台登入</strong> </div>
+
           <div class="p-3">
             <form @submit.prevent="signin">
               <div class="pt-1">
@@ -23,7 +25,7 @@
                   </div>
                   <input id="inputPassword" v-model="user.password" type="password" class="form-control" placeholder="請輸入密碼" required>
                 </div>
-                <button type="submit" class="btn btn-block btn-outline-primary w-75 mx-auto mt-4">登入</button>
+                <button type="submit" class="btn btn-block btn-outline-info w-75 mx-auto mt-4">登入</button>
               </div>
             </form>
           </div>

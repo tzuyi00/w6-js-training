@@ -2,7 +2,8 @@
 <nav class="navpanel navpanel-fixed-left">
     <div class="navpanel-container navpanel-flex navpanel-light">
         <div class="navpanel-brand">
-            <!-- <img src="{{ asset('images/logo_white.svg') }}" alt=""> -->
+            <!-- <img class="logoImg" src="@/assets/img/logoTopLight.png" alt="logoTop" />
+            <div class="logoTxt">HomeTown</div> -->
         </div>
         <div class="navpanel-body">
             <ul class="list-unstyled navpanel-nav">

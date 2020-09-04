@@ -34,17 +34,17 @@
             </td>
             <td>{{item.product.title}}</td>
             <td class="text-center">x{{ item.quantity }}</td>
-            <td class="text-right">${{item.product.price}}</td>
+            <td class="text-right">{{item.product.price | currency}}</td>
           </tr>
         </tbody>
         <tfoot>
           <tr v-if="order.coupon">
             <td colspan="3" class="text-right py-3">優惠折抵</td>
-            <td class="text-right">- NT ${{ (order.amount*(100/order.coupon.percent)) - (order.amount*(100/order.coupon.percent)) * (order.coupon.percent / 100) }}</td>
+            <td class="text-right">- NT {{ (order.amount*(100/order.coupon.percent)) - (order.amount*(100/order.coupon.percent)) * (order.coupon.percent / 100)  | currency}}</td>
           </tr>
           <tr>
             <td colspan="3" class="text-right" :class="{ isCoupon: order.coupon }">總計</td>
-            <td class="text-right text-danger" :class="{ isCoupon: order.coupon }">${{ order.amount }}</td>
+            <td class="text-right text-danger" :class="{ isCoupon: order.coupon }">{{ order.amount  | currency}}</td>
           </tr>
         </tfoot>
       </table>

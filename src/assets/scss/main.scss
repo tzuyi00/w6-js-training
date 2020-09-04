@@ -68,11 +68,24 @@ a:hover{
 }
 
 .bg-main-bg {
-  background-color: #F5F8FB !important;
+  background-color: $egg !important;
 }
 
 .hide-navpanel-btn {
   margin-left: 4.6rem;
+}
+
+.back-brand{
+  .logoImg{
+    width: 70px;
+  }
+  .logoTxt {
+    font-family: 'Marcellus SC', serif;
+    font-weight: bold;
+    font-size: 22px;
+    margin-left: 5px;
+    letter-spacing: 1px;
+  }
 }
 
 .line{

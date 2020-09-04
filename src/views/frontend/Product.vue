@@ -35,8 +35,8 @@
             </div>
             <hr>
             <div class="mb-3">
-              <del class="h6 text-secondary mb-0">NT${{ product.origin_price }}</del>
-              <div class="h4 text-info">NT${{ product.price }}</div>
+              <del class="h6 text-secondary mb-0">NT{{ product.origin_price | currency }}</del>
+              <div class="h4 text-info">NT{{ product.price | currency}}</div>
             </div>
             <div class="countNumber d-flex align-items-center">
               <button class="btn minus" @click="changeQty(-1)">
