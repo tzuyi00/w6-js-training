@@ -2,11 +2,11 @@
   <div class="container-fluid px-0">
     <header :style="{backgroundImage: `url(${img.header})` }">
       <div class="bannerTxt text-center">
-        午後閒暇，放下一切束縛
-        <br />不用去遠方，在家就能優雅渡假
+        <span>午後閒暇，放下一切束縛</span>
+        <br /><span>不用去遠方，在家就能優雅渡假</span>
         <br />
         <router-link to="/products">
-          <div class="bannerBtn btn btn-info mt-3">
+          <div class="bannerBtn btn btn-info mt-3 shadow-sm">
             選購去
             <i class="fas fa-hand-point-up"></i>
           </div>
@@ -96,7 +96,20 @@
       </div>
     </div>
 
-    <div class="middleBg" :style="{backgroundImage: `url(${img.middleBg})` }"></div>
+    <div class="middleBg" :style="{backgroundImage: `url(${img.middleBg})` }">
+      <div class="middleTxt text-center text-sm-left">
+        <span>尚未獲得周年慶優惠大獎嗎？</span>
+        <div class="text-center d-sm-flex align-items-center justify-content-end">
+          <span class="d-block d-sm-inline">快來刮出你的專屬優惠券</span>
+          <router-link to="/coupon">
+            <div class="middleBtn btn btn-info ml-sm-3 mt-3 mt-sm-0 shadow-sm">
+              領獎去
+              <i class="fas fa-hand-point-up"></i>
+            </div>
+          </router-link>
+        </div>
+      </div>
+    </div>
 
     <div class="container hotSale">
       <h2 class="title text-center">Hot Sale</h2>
@@ -164,7 +177,7 @@ export default {
         arr3:
           'https://hexschool-api.s3.us-west-2.amazonaws.com/custom/5avzNHhiaukMHhN6v5xtPxrFp21zVw0v5mTETAjoU0IIu7sFDDIlqEQvnKW2NkYHdpWPOkW8jrV5puN09yuaACkHkhf1RpWT5IECLkv8oDckcgepoxOhCIxAVNDCnVBw.jpg',
         middleBg:
-          'https://hexschool-api.s3.us-west-2.amazonaws.com/custom/Pj9XbFVDhziDv3x7EIkSFr7SnOoDXa0c6SHR6pNRBEXUzlmhTIYR3d47gPM4K9dNsegwAs4Z7Bp3TAOieiOCDAFzvTxSyewrpa7O5Ohsb7UoHsR9fWCiqTrZ3XRanoof.jpg',
+          'https://hexschool-api.s3.us-west-2.amazonaws.com/custom/APyH4hoonnPFz55P2cdhuIEG7CGJhNT59P4F5WhXD3rhlkywYxCPLNbNxGRmX2KCKbppKiZmnr8rB6j0kH0qzJ0D6tOv5G2a5ZBYsZdrFgcL7vQjd321Nr5yjh1Qk1oa.jpg',
         good1:
           'https://hexschool-api.s3.us-west-2.amazonaws.com/custom/zFVVWbhJ6Gbphym6yHXfxQ0QIYWbL89d8RVxiodwuCFhryhlIgIgCReG7SDDBxZuCkwX55l2hBiA3lT1sdYTcWK5WqSxELBAy8XIjDsul9OSyC7ErhR4RVyRoZaekK5J.jpg',
         good2:

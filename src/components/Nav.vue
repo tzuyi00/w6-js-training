@@ -16,7 +16,7 @@
         <li class="nav-item">
           <router-link to="/coupon" class="nav-link">
             <i class="fas fa-money-bill-wave mr-1"></i>
-            <span>限時優惠</span>
+            <span>優惠活動</span>
           </router-link>
         </li>
       </ul>

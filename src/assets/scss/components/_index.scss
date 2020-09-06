@@ -32,6 +32,10 @@ header {
     margin: auto;
     font-size: 26px;
 
+    span {
+      text-shadow: #3f3f3f 2px 2px 2px;
+    }
+
     .bannerBtn {
       width: 150px;
       font-size: 20px;
@@ -46,6 +50,21 @@ header {
     font-size: 35px;
     animation: arrowMove 1s linear infinite;
     cursor: pointer;
+  }
+}
+
+@media (max-width: 575.98px) {
+  header {
+    .bannerTxt {
+      font-size: 22px;
+      letter-spacing: 1px;
+
+      .bannerBtn {
+        width: 120px;
+        font-size: 18px;
+      }
+    }
+
   }
 }
 
@@ -74,6 +93,18 @@ header {
 @media (max-width: 767.98px) {
   .aboutUs {
     background-image: none !important;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .aboutUs .aboutUsTxt {
+    .h4 {
+      font-size: 20px;
+    }
+
+    .h5 {
+      font-size: 16px;
+    }
   }
 }
 
@@ -139,10 +170,52 @@ header {
 
 .middleBg {
   background-size: cover;
-  // background-position: center;
   background-attachment: fixed;
-  height: 320px;
+  height: 300px;
   margin: 100px 0;
+  position: relative;
+
+  .middleTxt {
+    position: absolute;
+    max-width: 680px;
+    width: 90%;
+    height: fit-content;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    color: #fff;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 26px;
+
+    span {
+      text-shadow: #3f3f3f 2px 2px 2px;
+    }
+
+    .middleBtn {
+      width: 150px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+  }
+}
+
+@media (max-width: 575.98px) {
+  .middleBg {
+    height: 250px;
+    .middleTxt {
+      font-size: 22px;
+
+      .middleBtn {
+        width: 120px;
+        font-size: 18px;
+      }
+    }
+
+
+  }
 }
 
 .hotSale {

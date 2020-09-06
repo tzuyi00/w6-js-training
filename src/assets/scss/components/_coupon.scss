@@ -1,0 +1,87 @@
+/* == 刮刮樂區塊 == */
+.main {
+  position: relative;
+  width: 90%;
+  max-width: 400px;
+  height: 300px;
+  outline: 2px solid #fff;
+  padding: 20px;
+  -webkit-user-select: none;
+  background-color: #fff;
+
+  .award{
+    width: 100%;
+    max-width: 330px;
+  }
+
+  .coupon {
+    input {
+      background-color: transparent;
+      // border: 2px solid #eac078;
+      border: none;
+      text-align: center;
+      width: 150px;
+      height: 50px;
+      font-size: 30px;
+      font-weight: 500;
+      color: $danger;
+      text-shadow: 2px 1px 3px #eac078;
+    }
+    input:focus{
+      outline: none;
+    }
+  }
+}
+
+@media (max-width: 400px){
+  .main{
+    height: 280px;
+  }
+}
+
+/* ========== */
+.couponTitle{
+  margin-top: 120px;
+}
+
+.eggBox {
+  background-repeat :no-repeat,no-repeat;
+  background-position: bottom left, top right;
+  background-color: #fff8ec;
+  padding: 20px;
+  border-radius: 3px;
+
+  .primLine {
+    padding: 30px;
+    border: 2px solid $info;
+    border-radius: 3px;
+
+  }
+}
+
+@media (max-width: 991.98px) {
+  .eggBox{
+    background-size: 35%, 25%;
+  }
+}
+@media (max-width: 575.98px){
+  .eggBox{
+    padding: 15px;
+    .primLine{
+      padding: 20px 10px;
+      .h3{
+        font-size: 25px;
+      }
+    }
+  }
+}
+.couponTitle {
+  .line {
+    width: 180px;
+  }
+}
+
+.couponTxt {
+  max-width: 600px;
+}
+

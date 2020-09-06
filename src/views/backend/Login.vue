@@ -2,10 +2,12 @@
   <div class="container-fluid bg-main-bg" style="width: 100vw; height: 100vh;">
 
     <div class="d-flex flex-column align-items-center">
-      <div class="back-brand text-center mb-3" style="margin-top: 8rem;">
-        <img class="logoImg" src="@/assets/img/logoTop.png" alt="logoTop" />
-        <div class="logoTxt">HomeTown</div>
-      </div>
+      <router-link to="/">
+        <div class="back-brand text-center mb-3" style="margin-top: 8rem;">
+          <img class="logoImg" src="@/assets/img/logoTop.png" alt="logoTop" />
+          <div class="logoTxt">HomeTown</div>
+        </div>
+      </router-link>
       <div class="card" style="width: 340px;">
         <div class="card-body">
           <div class="h5 text-center"> <strong>後台登入</strong> </div>

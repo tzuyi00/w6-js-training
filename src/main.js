@@ -10,6 +10,7 @@ import {
 import * as rules from 'vee-validate/dist/rules' // 規則檔案（ex: email...）
 import zhTW from 'vee-validate/dist/locale/zh_TW.json' // 語系檔案
 import 'bootstrap'
+import clipboard from 'clipboard'
 // Bus
 import './bus'
 import Loading from 'vue-loading-overlay'
@@ -49,6 +50,8 @@ localize('tw', zhTW) // 中文語系
 Vue.component('ValidationObserver', ValidationObserver)
 // 將 VeeValidate input 驗證工具載入 作為全域註冊
 Vue.component('ValidationProvider', ValidationProvider)
+
+Vue.prototype.Clipboard = clipboard
 
 new Vue({
   router,

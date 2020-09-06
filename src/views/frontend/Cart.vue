@@ -70,8 +70,8 @@
         </table>
 
         <div class="input-group d-flex align-items-center justify-content-end">
-          <span class="mr-3">使用折價券</span>
-          <input v-model="coupon_code"  @keyup.enter="addCoupon" type="text" class="couponInput form-control" placeholder="輸入折價券號碼" />
+          <span class="mr-3">使用優惠券</span>
+          <input v-model="coupon_code"  @keyup.enter="addCoupon" type="text" class="couponInput form-control" placeholder="輸入優惠券序號" />
           <div class="input-group-append">
             <button class="btn btn-outline-primary couponBtn" type="button" @click="addCoupon" :disabled="!coupon_code">套用</button>
           </div>
