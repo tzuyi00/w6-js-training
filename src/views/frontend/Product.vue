@@ -102,10 +102,10 @@ export default {
     changeNumber (num) {
       if (num >= 10) {
         this.productNum = 10
-        this.$bus.$emit('message:push', '數量不可超過10喔!', 'danger')
+        this.$bus.$emit('message:push', '數量不可超過10喔!', 'info')
       } else if (num <= 1) {
         this.productNum = 1
-        this.$bus.$emit('message:push', '數量不可低於1喔!', 'danger')
+        this.$bus.$emit('message:push', '數量不可低於1喔!', 'info')
       } else {
         this.productNum = num
       }

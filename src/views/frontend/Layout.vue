@@ -14,23 +14,38 @@
             </p>
           </div>
 
-          <form class="contactForm shadow p-3 p-md-5">
-            <div class="form-group">
-              <input type="text" class="form-control" id placeholder="Name 姓名" />
-            </div>
-            <div class="form-group">
-              <input type="tel" class="form-control" id placeholder="Phone 電話" />
-            </div>
-            <div class="form-group">
-              <input type="email" class="form-control" id placeholder="Email 信箱" />
-            </div>
-            <div class="form-group">
-              <textarea class="form-control" id rows="3" placeholder="Message 訊息"></textarea>
-            </div>
-            <div class="form-group text-right">
-              <div type="button" class="btn btn-info mx-auto">送出</div>
-            </div>
-          </form>
+          <!-- <validation-observer v-slot="{ invalid }"> -->
+            <form class="contactForm shadow p-3 p-md-5 needs-validation" @submit.prevent="createOrder"  novalidate>
+              <div class="form-group">
+                <!-- <validation-provider v-slot="{ errors, classes }" rules="required"> -->
+                  <input type="text" class="form-control" :class="classes" name="姓名" placeholder="Name 姓名" required/>
+                  <!-- <span v-if="errors[0]" class="text-danger">{{ errors[0] }}</span> -->
+                <!-- </validation-provider> -->
+              </div>
+              <div class="form-group">
+                <label for="validationCustom01">First name</label>
+                <input type="text" class="form-control" id="validationCustom01" placeholder="First name" value="Mark" required>
+                <div class="valid-feedback">
+                  Looks good!
+                </div>
+              </div>
+              <div class="form-group">
+                <!-- <validation-provider v-slot="{ errors, classes }" rules="required|email"> -->
+                  <input type="email" class="form-control" :class="classes" name="信箱" placeholder="Email 信箱" />
+                  <!-- <span v-if="errors[0]" class="text-danger">{{ errors[0] }}</span> -->
+                <!-- </validation-provider> -->
+              </div>
+              <div class="form-group">
+                <!-- <validation-provider v-slot="{ errors, classes }" rules="required"> -->
+                  <textarea class="form-control" :class="classes" rows="3" name="訊息" placeholder="Message 訊息"></textarea>
+                  <!-- <span v-if="errors[0]" class="text-danger">{{ errors[0] }}</span> -->
+                <!-- </validation-provider> -->
+              </div>
+              <div class="form-group text-right mb-0">
+                <button type="submit" :disabled="invalid" class="btn btn-info mx-auto">送出</button>
+              </div>
+            </form>
+          <!-- </validation-observer> -->
         </div>
         <div
           class="contactImg d-none d-md-block col-md-7"

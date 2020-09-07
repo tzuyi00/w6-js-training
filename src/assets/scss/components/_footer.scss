@@ -3,7 +3,7 @@ footer {
 
   .contactUs {
     position: relative;
-    height: 550px;
+    height: 540px;
 
     .contactTxt {
       padding-right: 100px;
@@ -25,7 +25,7 @@ footer {
       }
 
       .contactForm {
-        font-family:"Microsoft JhengHei";
+        font-family: "Microsoft JhengHei";
         position: absolute;
         background-color: rgba($color: #fff, $alpha: 0.9);
         width: 100%;
@@ -35,23 +35,6 @@ footer {
         color: $primdark;
         text-align: left;
       }
-
-
-    }
-
-    @media (max-width: 767.98px) {
-      .contactTxt {
-        padding: 50px 30px;
-
-        .contactDetail{
-          width: 100%;
-        }
-
-        .contactForm {
-          position: initial;
-        }
-      }
-
     }
 
     .contactImg {
@@ -61,7 +44,25 @@ footer {
     }
   }
 
-  .underLine{
+  @media (max-width: 767.98px) {
+    .contactUs {
+      height: auto;
+
+      .contactTxt {
+        padding: 50px 30px;
+
+        .contactDetail {
+          width: 100%;
+        }
+
+        .contactForm {
+          position: initial;
+        }
+      }
+    }
+  }
+
+  .underLine {
     background-color: #fff;
     color: $dark;
   }

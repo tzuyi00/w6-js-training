@@ -333,9 +333,9 @@ export default {
     */
     quantityUpdata (id, num) {
       if (num > 10) {
-        this.$bus.$emit('message:push', '數量不可超過10喔!', 'danger')
+        this.$bus.$emit('message:push', '數量不可超過10喔!', 'info')
       } else if (num < 1) {
-        this.$bus.$emit('message:push', '數量不可低於1喔!', 'danger')
+        this.$bus.$emit('message:push', '數量不可低於1喔!', 'info')
       } else {
         this.isLoading = true
         const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/shopping`
@@ -381,7 +381,7 @@ export default {
         this.isLoading = false
       }).catch((error) => {
         this.isLoading = false
-        this.$bus.$emit('message:push', `${error.response.data.message}`, 'danger')
+        this.$bus.$emit('message:push', `${error.response.data.message}`, 'info')
       })
     },
     createOrder () {
@@ -409,7 +409,7 @@ export default {
           this.$bus.$emit('message:push',
             `建立訂單失敗惹，好糗Σ( ° △ °|||)︴
           ${err}`,
-            'danger')
+            'info')
         })
 
         this.isLoading = false

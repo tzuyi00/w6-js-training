@@ -1,5 +1,5 @@
 <template>
-  <div style="position: fixed; top: 20px; right: 20px; min-width: 300px; z-index: 11000;">
+  <div style="position: fixed; top: 85px; right: 20px; min-width: 300px; z-index: 11000;">
     <div
       v-for="(item, i) in messages"
       :id="`toast-${i}`"
@@ -9,26 +9,28 @@
       aria-live="assertive"
       aria-atomic="true"
       data-autohide="false"
+      :class="`bg-${ item.status }`"
     >
-      <div class="toast-header">
+      <!-- <div class="toast-header">
         <div
           class="inline-block rounded mr-2"
           style="width: 20px; height: 20px"
           :class="`bg-${ item.status }`"
         />
         <strong class="mr-auto">light bakery</strong>
+
+      </div> -->
+      <div class="toast-body">
+        {{ item.message }}
         <button
           type="button"
-          class="ml-2 mb-1 close"
+          class="ml-2 close"
           data-dismiss="toast"
           aria-label="Close"
           @click="closeToast(`toast-${i}`)"
         >
           <span aria-hidden="true">&times;</span>
         </button>
-      </div>
-      <div class="toast-body">
-        {{ item.message }}
       </div>
     </div>
   </div>
@@ -87,5 +89,14 @@ export default {
   top: 56px;
   right: 20px;
   z-index: 1100;
+}
+.toast-body{
+  color: #ffffff;
+
+}
+.toast-body .close {
+  color: #ffffff;
+  opacity: 1;
+  line-height: 18px;
 }
 </style>

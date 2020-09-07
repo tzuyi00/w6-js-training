@@ -32,6 +32,24 @@
     }
   }
 
+  @media (max-width: 575.98px) {
+    .navbar-brand{
+      margin-right: 0;
+      img.logoImg {
+        width: 50px;
+      }
+      .logoTxt{
+        font-size: 18px;
+      }
+    }
+    ul.objs {
+      span {
+        font-size: 14px;
+      }
+    }
+  }
+
+
   .dropdown {
     .dropdown-toggle::after {
       display: none;
@@ -46,7 +64,7 @@
         overflow-y: auto;
       }
 
-      
+
 
       .totalInfo {
         padding: 3px 13px;
@@ -67,14 +85,15 @@
 
     }
 
-    @media (max-width: 575.98px){
-      .dropdown-menu{
+    @media (max-width: 575.98px) {
+      .dropdown-menu {
         width: 300px;
       }
     }
   }
 
 }
+
 table.itemContent {
   tbody {
     padding: 3px 10px;
@@ -99,10 +118,12 @@ table.itemContent {
       .itemName {
         width: 50%;
       }
-      .trashIcon{
+
+      .trashIcon {
         cursor: pointer;
       }
-      .trashIcon:hover{
+
+      .trashIcon:hover {
         color: #f00;
       }
     }

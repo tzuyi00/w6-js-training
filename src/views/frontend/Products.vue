@@ -6,7 +6,7 @@
         <h1>家具列表</h1>
       </div>
     </div>
-    <div class="category">
+    <div class="category mx-auto">
       <ul>
         <li :class="{ active: filterType === 'all' }" @click="getFilter(filterType = 'all')">全部家具</li>
         <li :class="{ active: filterType === 'table' }" @click="getFilter(filterType = 'table')">桌子</li>

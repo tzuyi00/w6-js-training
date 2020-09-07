@@ -5,18 +5,18 @@
       <img class="logoImg" src="@/assets/img/logoTop.png" alt="logoTop" />
       <div class="logoTxt">HomeTown</div>
     </router-link>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <ul class="navbar-nav mr-sm-auto ml-auto ml-sm-0">
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav objs mr-sm-auto ml-auto ml-sm-0">
         <li class="nav-item">
-          <router-link to="/products" class="nav-link">
+          <router-link to="/products" class="nav-link text-center">
             <i class="fas fa-couch mr-1"></i>
-            <span class="shop">家具列表</span>
+            <span class="d-block d-sm-inline">家具列表</span>
           </router-link>
         </li>
         <li class="nav-item">
-          <router-link to="/coupon" class="nav-link">
+          <router-link to="/coupon" class="nav-link text-center">
             <i class="fas fa-money-bill-wave mr-1"></i>
-            <span>優惠活動</span>
+            <span class="d-block d-sm-inline">優惠活動</span>
           </router-link>
         </li>
       </ul>
@@ -26,9 +26,14 @@
             <i class="fa fa-shopping-cart"></i>
             <span class="badge badge-pill badge-danger" v-if="cart.length">{{cart.length}}</span>
           </a>
-          <!-- <div v-if="!cart.length" class="dropdown-menu dropdown-menu-right">
-            <h5 class="itemTitle text-center my-2">您尚未選擇商品</h5>
-          </div> -->
+          <div v-if="!cart.length" class="dropdown-menu dropdown-menu-right text-center">
+            <h5 class="itemTitle my-2">您尚未選擇商品</h5>
+            <router-link to="/products" class="">
+              <button class="btn btn-info mt-1">
+                <i class="fas fa-couch"></i> 先去選購吧
+              </button>
+            </router-link>
+          </div>
           <div v-if="cart.length" class="dropdown-menu dropdown-menu-right">
             <h5 class="itemTitle text-center my-2">已選擇商品</h5>
             <div class="cart-scroll">
@@ -122,7 +127,7 @@ export default {
         this.$bus.$emit('message:push', `"${response.data.data.product.title}" 已成功放入購物車！`, 'success')
       }).catch((error) => {
         console.log(error.response)
-        this.$bus.$emit('message:push', `糟糕！${error.response.data.errors[0]}可直接去結帳囉~`, 'danger')
+        this.$bus.$emit('message:push', `${error.response.data.errors[0]}可直接去結帳囉~`, 'info')
       })
     },
     removeCartItem (id) {

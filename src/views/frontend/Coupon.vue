@@ -19,7 +19,7 @@
           <div class="h5 mt-3">快來玩刮刮樂遊戲！刮開你個人的專屬優惠大獎，多項折扣等你來拿，不限金額每筆訂單最高享有"五折"大優惠，數量有限送完為止，早買早享受唷！</div>
         </div>
         <!-- 刮刮樂區塊 -->
-        <div class="main mx-auto mt-5 text-center">
+        <div class="main mx-auto mt-4 mt-sm-5 text-center">
           <img class="award" :src="award_pic" alt="">
           <div class="mt-2">結帳時輸入以下序號，即可獲得折扣優惠</div>
           <div class="coupon mt-3 d-flex justify-content-center align-items-center">
@@ -31,6 +31,10 @@
               >
               <i class="fas fa-copy"></i>
             </div>
+          </div>
+          <div class="mt-3">
+            不甘心結果嗎<i class="fas fa-hand-point-right mx-2"></i>
+            <div class="btn btn-outline-info btn-sm" @click="reload">再玩一次</div>
           </div>
           <canvas id="myCanvas" style="position: absolute;top:0; left: 0; z-index: 1000;"></canvas>
         </div>
@@ -67,6 +71,9 @@ export default {
     this.copyBtn = new this.Clipboard(this.$refs.copy)
   },
   methods: {
+    reload () {
+      this.$router.go(0)
+    },
     clipboard () {
       this.$bus.$emit('message:push', '已複製序號，快去購物吧！', 'success')
     },
@@ -74,6 +81,7 @@ export default {
       var myCanvas = document.getElementById('myCanvas')
       var parentDOM = document.getElementById('myCanvas').parentNode
       var can = myCanvas.getContext('2d')
+      var rect = myCanvas.getBoundingClientRect()
 
       myCanvas.width = parentDOM.clientWidth
       myCanvas.height = parentDOM.clientHeight
@@ -94,8 +102,6 @@ export default {
       var moveEvtName = device ? 'touchmove' : 'mousemove'
       var endEvtName = device ? 'touchend' : 'mouseup'
 
-      console.log(startEvtName, moveEvtName)
-
       /* 增加触摸监听 */
       myCanvas.addEventListener(startEvtName, function () {
         myCanvas.addEventListener(moveEvtName, draw, false)
@@ -105,8 +111,6 @@ export default {
         myCanvas.removeEventListener(moveEvtName, draw, false)
       }, false)
 
-      var rect = myCanvas.getBoundingClientRect()
-      console.log(rect)
       /* 根据手指移动画线，使之变透明 */
       function draw (event) {
         event.preventDefault()

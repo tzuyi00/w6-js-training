@@ -144,12 +144,12 @@ export default {
           this.$bus.$emit('message:push',
             `出現錯誤惹，好糗Σ( ° △ °|||)︴
             ${response.data.message}`,
-            'danger')
+            'info')
         }
       }).catch((error) => {
         this.isLoading = false
         console.log(error.response.data.errors)
-        this.$bus.$emit('message:push', '必填項目沒填唷！', 'danger')
+        this.$bus.$emit('message:push', '必填項目沒填唷！', 'info')
       })
     }
   }

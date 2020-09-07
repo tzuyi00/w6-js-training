@@ -96,6 +96,24 @@
         </button>
       </router-link>
     </div>
+    <!-- <div id="paymentOk" class="modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Modal body text goes here.</p>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div> -->
   </div>
 </template>
 
@@ -142,6 +160,8 @@ export default {
       const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/orders/${this.orderId}/paying`
 
       this.$http.post(url).then((response) => {
+        this.$bus.$emit('message:push', '恭喜您，已完成付款！', 'success')
+        // 如果成功true，重跑頁面
         if (response.data.data.paid) {
           this.getDetailed(this.orderId)
         }

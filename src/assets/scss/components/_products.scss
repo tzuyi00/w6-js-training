@@ -80,10 +80,14 @@
 
 @media (max-width: 575.98px) {
   .category {
-    margin: 60px 0 40px 0;
+    width: 350px;
+    margin: 60px 0 30px 0;
 
     ul li {
       margin-bottom: 15px;
+    }
+    ul li:nth-child(3){
+      border-right: none;
     }
   }
 }

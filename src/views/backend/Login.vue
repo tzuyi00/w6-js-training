@@ -68,7 +68,7 @@ export default {
       }).catch((error) => {
         this.$bus.$emit('message:push',
           '登入失敗，好糗 Σ( ° △ °|||)︴ ',
-          'danger')
+          'info')
         console.log(error.response)
       })
     }
