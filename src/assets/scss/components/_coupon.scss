@@ -1,3 +1,6 @@
+html, body {
+  overscroll-behavior-y: contain;
+}
 /* == 刮刮樂區塊 == */
 .main {
   position: relative;

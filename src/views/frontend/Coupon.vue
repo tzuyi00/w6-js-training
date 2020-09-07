@@ -94,6 +94,8 @@ export default {
       var moveEvtName = device ? 'touchmove' : 'mousemove'
       var endEvtName = device ? 'touchend' : 'mouseup'
 
+      console.log(startEvtName, moveEvtName)
+
       /* 增加触摸监听 */
       myCanvas.addEventListener(startEvtName, function () {
         myCanvas.addEventListener(moveEvtName, draw, false)
@@ -105,14 +107,19 @@ export default {
 
       /* 根据手指移动画线，使之变透明 */
       function draw (event) {
-        var x = device ? event.touches[0].offsetX : event.offsetX
-        var y = device ? event.touches[0].offsetY : event.offsetY
+        console.log(can)
+        console.log(event)
+        var x = device ? event.touches[0].clientX : event.offsetX
+        var y = device ? event.touches[0].clientY - can.canvas.offsetHeight : event.offsetY
+        console.log(x, y)
 
         can.beginPath()
         can.globalCompositeOperation = 'destination-out'
         can.arc(x, y, 20, 0, Math.PI * 2, false)
         can.fill()
         can.closePath()
+
+        event.preventDefault()
       }
 
       // 扣除到一定程度,自己打开
