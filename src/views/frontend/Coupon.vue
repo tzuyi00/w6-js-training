@@ -105,21 +105,19 @@ export default {
         myCanvas.removeEventListener(moveEvtName, draw, false)
       }, false)
 
+      var rect = myCanvas.getBoundingClientRect()
+      console.log(rect)
       /* 根据手指移动画线，使之变透明 */
       function draw (event) {
-        console.log(can)
-        console.log(event)
-        var x = device ? event.touches[0].clientX : event.offsetX
-        var y = device ? event.touches[0].clientY - can.canvas.offsetHeight : event.offsetY
-        console.log(x, y)
+        event.preventDefault()
+        var x = device ? event.touches[0].pageX - rect.x : event.offsetX
+        var y = device ? event.touches[0].pageY - rect.y : event.offsetY
 
         can.beginPath()
         can.globalCompositeOperation = 'destination-out'
         can.arc(x, y, 20, 0, Math.PI * 2, false)
         can.fill()
         can.closePath()
-
-        event.preventDefault()
       }
 
       // 扣除到一定程度,自己打开
