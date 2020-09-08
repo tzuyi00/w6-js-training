@@ -11,6 +11,8 @@ import * as rules from 'vee-validate/dist/rules' // 規則檔案（ex: email...�
 import zhTW from 'vee-validate/dist/locale/zh_TW.json' // 語系檔案
 import 'bootstrap'
 import clipboard from 'clipboard'
+import 'animate.css'
+import WOW from 'wow.js/dist/wow'
 // Bus
 import './bus'
 import Loading from 'vue-loading-overlay'
@@ -52,6 +54,8 @@ Vue.component('ValidationObserver', ValidationObserver)
 Vue.component('ValidationProvider', ValidationProvider)
 
 Vue.prototype.Clipboard = clipboard
+
+new WOW({ live: true }).init()
 
 new Vue({
   router,

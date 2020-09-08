@@ -2,11 +2,10 @@
   <div class="container-fluid px-0">
     <header :style="{backgroundImage: `url(${img.header})` }">
       <div class="bannerTxt text-center">
-        <span>午後閒暇，放下一切束縛</span>
-        <br /><span>不用去遠方，在家就能優雅渡假</span>
-        <br />
+        <div class="txts wow animate__animated animate__fadeInUp">午後閒暇，放下一切束縛</div>
+        <div class="txts wow animate__animated animate__fadeInUp" data-wow-delay="1s">不用去遠方，在家就能優雅渡假</div>
         <router-link to="/products">
-          <div class="bannerBtn btn btn-info mt-3 shadow-sm">
+          <div class="bannerBtn btn btn-info mt-3 shadow-sm wow animate__animated animate__jello" data-wow-delay="1.8s">
             選購去
             <i class="fas fa-hand-point-up"></i>
           </div>
@@ -19,32 +18,36 @@
     <div id="arrowDown" class="container text-center">
       <div class="aboutUs row mt-5" :style="{backgroundImage: `url(${img.flower})` }">
         <div class="order-md-2 aboutUsTxt col-12 col-md-6 align-self-center">
-          <h2 class="title">About Us</h2>
-          <div class="line mx-auto"></div>
-          <div class="h4 mt-4">相信 讓家更貼近</div>
-          <div class="h5 mt-3">
+          <div class="wow animate__animated animate__fadeInUp" data-wow-delay="0.5s">
+            <h2 class="title">About Us</h2>
+            <div class="line mx-auto"></div>
+          </div>
+          <div class="h4 mt-4 wow animate__animated animate__fadeInUp" data-wow-delay="0.8s">相信 家會更貼心</div>
+          <div class="h5 mt-3 wow animate__animated animate__fadeInUp" data-wow-delay="1s">
             我們的初衷
-            <br />是給您打造一個有格調的家
+            <br />是為您打造一個有格調的家
             <br />簡約而不簡單的造型設計
             <br />讓家居回歸真摯的美好
             <br />
           </div>
-          <div class="h5 mt-3">
+          <div class="h5 mt-3 wow animate__animated animate__fadeInUp" data-wow-delay="1s">
             款式多樣 價格透明
             <br />專業人員為您現場丈量規劃
             <br />幫您以最少預算
             <br />打造出濃濃鄉村氣息的幸福居家
           </div>
         </div>
-        <div class="order-md-1 col-12 col-md-6">
+        <div class="order-md-1 col-12 col-md-6 wow animate__animated animate__fadeInLeft">
           <img class="aboutUsImg" :src="img.aboutUs" alt />
         </div>
       </div>
       <div class="arrival">
-        <h2 class="title text-center">New Arrival</h2>
-        <div class="line mx-auto"></div>
+        <div class="wow animate__animated animate__fadeInUp">
+          <h2 class="title text-center">New Arrival</h2>
+          <div class="line mx-auto"></div>
+        </div>
         <div class="row mt-4">
-          <div class="col-12 col-md-4 mt-4 px-sm-0">
+          <div class="col-12 col-md-4 mt-4 px-sm-0 wow animate__animated animate__fadeInUp">
             <div class="arrWrap">
               <router-link to="/product/YQf9MNfIPFcjKNXdaKYZWSigm5ioJvsOXxuTpYm7rB4vFIr9a6zNvPrXi9mwHBJq">
                 <div class="arrImg" :style="{backgroundImage: `url(${img.arr1})` }"></div>
@@ -60,7 +63,7 @@
               </div>
             </div>
           </div>
-          <div class="col-12 col-md-4 mt-4 px-sm-0 d-flex flex-column">
+          <div class="col-12 col-md-4 mt-4 px-sm-0 d-flex flex-column wow animate__animated animate__fadeInUp" data-wow-delay="0.5s">
             <div class="arrWrap order-md-2">
               <router-link to="/product/bmbWYKRkF9YeGFDPVQqBo1HEv6pX0vCoUpkNuLn08VP3btszYfAoymUNxEMF2cbj">
                 <div class="arrImg" :style="{backgroundImage: `url(${img.arr2})` }"></div>
@@ -76,7 +79,7 @@
               </div>
             </div>
           </div>
-          <div class="col-12 col-md-4 mt-4 px-sm-0">
+          <div class="col-12 col-md-4 mt-4 px-sm-0 wow animate__animated animate__fadeInUp" data-wow-delay="1s">
             <div class="arrWrap">
               <router-link to="/product/35Fp3amsAeRN7IupNYykoHYbr8dl8fDoQfXVZfvgqi9tgCxBmfKd05RBnWL81D9U">
                 <div class="arrImg" :style="{backgroundImage: `url(${img.arr3})` }"></div>
@@ -98,11 +101,11 @@
 
     <div class="middleBg" :style="{backgroundImage: `url(${img.middleBg})` }">
       <div class="middleTxt text-center text-sm-left">
-        <span>尚未獲得周年慶優惠大獎嗎？</span>
+        <div class="txts wow animate__animated animate__bounceInLeft">尚未獲得周年慶優惠大獎嗎？</div>
         <div class="text-center d-sm-flex align-items-center justify-content-end">
-          <span class="d-block d-sm-inline">快來刮出你的專屬優惠券</span>
+          <div class="txts d-block d-sm-inline wow animate__animated animate__bounceInRight" data-wow-delay="1s">快來刮出你的專屬優惠券</div>
           <router-link to="/coupon">
-            <div class="middleBtn btn btn-info ml-sm-3 mt-3 mt-sm-0 shadow-sm">
+            <div class="middleBtn btn btn-info ml-sm-3 mt-3 mt-sm-0 shadow-sm wow animate__animated animate__backInUp" data-wow-delay="2s">
               領獎去
               <i class="fas fa-hand-point-up"></i>
             </div>
@@ -112,10 +115,13 @@
     </div>
 
     <div class="container hotSale">
-      <h2 class="title text-center">Hot Sale</h2>
-      <div class="line mx-auto"></div>
+      <div class="wow animate__animated animate__fadeInUp">
+        <h2 class="title text-center">Hot Sale</h2>
+        <div class="line mx-auto"></div>
+      </div>
+
       <div class="row mt-4">
-        <div class="col-12 col-md-6 mt-4">
+        <div class="col-12 col-md-6 mt-4 wow animate__animated animate__fadeInUp">
           <router-link to="/product/C0ctzEP4vsNjXCjPxVeE8Mw61nGu1kBJBSju4Qxa7kCxY1tG2NwcVB20JAEKMkXJ">
             <div class="goodWrap" :style="{backgroundImage: `url(${img.good1})` }">
               <div class="goodTitle">珍愛雙人布沙發</div>
@@ -131,7 +137,7 @@
             </div>
           </router-link>
         </div>
-        <div class="col-12 col-md-6 mt-4">
+        <div class="col-12 col-md-6 mt-4 wow animate__animated animate__fadeInUp" data-wow-delay="1s">
           <router-link to="/product/EUySZ1dDkRzOn7EKKUK1YWGQIHD7nvFfcWvHsYGkmY9mo6MU2Eo3V00Wp7swZWiG">
             <div class="goodWrap" :style="{backgroundImage: `url(${img.good2})` }">
               <div class="goodTitle">手工唯美桌燈</div>
@@ -152,7 +158,7 @@
     <div class="goShopBtn">
       <hr />
       <router-link to="/products">
-        <button class="btn btn-info">購物去</button>
+        <button class="btn btn-info wow animate__animated animate__jello" data-wow-delay="1s">購物去</button>
       </router-link>
     </div>
   </div>
@@ -188,7 +194,9 @@ export default {
     }
   },
   created () {},
-  mounted () {},
+  mounted () {
+    // new WOW().init()
+  },
   methods: {
     arrowDown () {
       $('body,html').animate(

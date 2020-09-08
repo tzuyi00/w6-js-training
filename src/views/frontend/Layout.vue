@@ -14,38 +14,54 @@
             </p>
           </div>
 
-          <!-- <validation-observer v-slot="{ invalid }"> -->
-            <form class="contactForm shadow p-3 p-md-5 needs-validation" @submit.prevent="createOrder"  novalidate>
+          <validation-observer v-slot="{ invalid }">
+            <form id="contactForm" class="contactForm shadow p-3 p-md-5">
               <div class="form-group">
-                <!-- <validation-provider v-slot="{ errors, classes }" rules="required"> -->
-                  <input type="text" class="form-control" :class="classes" name="姓名" placeholder="Name 姓名" required/>
-                  <!-- <span v-if="errors[0]" class="text-danger">{{ errors[0] }}</span> -->
-                <!-- </validation-provider> -->
+                <validation-provider v-slot="{ errors, classes }" rules="required">
+                  <input
+                    type="text"
+                    class="form-control"
+                    :class="classes"
+                    name="姓名"
+                    placeholder="Name 姓名"
+                    v-model="form.name"
+                  />
+                  <span v-if="errors[0]" class="text-danger">{{ errors[0] }}</span>
+                </validation-provider>
               </div>
               <div class="form-group">
-                <label for="validationCustom01">First name</label>
-                <input type="text" class="form-control" id="validationCustom01" placeholder="First name" value="Mark" required>
-                <div class="valid-feedback">
-                  Looks good!
-                </div>
+                <validation-provider v-slot="{ errors, classes }" rules="required|email">
+                  <input
+                    type="email"
+                    class="form-control"
+                    :class="classes"
+                    name="信箱"
+                    placeholder="Email 信箱"
+                    v-model="form.email"
+                  />
+                  <span v-if="errors[0]" class="text-danger">{{ errors[0] }}</span>
+                </validation-provider>
               </div>
               <div class="form-group">
-                <!-- <validation-provider v-slot="{ errors, classes }" rules="required|email"> -->
-                  <input type="email" class="form-control" :class="classes" name="信箱" placeholder="Email 信箱" />
-                  <!-- <span v-if="errors[0]" class="text-danger">{{ errors[0] }}</span> -->
-                <!-- </validation-provider> -->
-              </div>
-              <div class="form-group">
-                <!-- <validation-provider v-slot="{ errors, classes }" rules="required"> -->
-                  <textarea class="form-control" :class="classes" rows="3" name="訊息" placeholder="Message 訊息"></textarea>
-                  <!-- <span v-if="errors[0]" class="text-danger">{{ errors[0] }}</span> -->
-                <!-- </validation-provider> -->
+                <validation-provider v-slot="{ errors, classes }" rules="required">
+                  <textarea
+                    class="form-control"
+                    :class="classes"
+                    rows="3"
+                    name="訊息"
+                    placeholder="Message 訊息"
+                    v-model="form.message"
+                  >
+                  </textarea>
+                  <span v-if="errors[0]" class="text-danger">{{ errors[0] }}</span>
+                </validation-provider>
               </div>
               <div class="form-group text-right mb-0">
-                <button type="submit" :disabled="invalid" class="btn btn-info mx-auto">送出</button>
+                <button type="button" :disabled="invalid" @click="contactSubmit" class="btn btn-info mx-auto">送出</button>
               </div>
+              <input type="reset" style="display:none;" />
             </form>
-          <!-- </validation-observer> -->
+          </validation-observer>
         </div>
         <div
           class="contactImg d-none d-md-block col-md-7"
@@ -63,7 +79,6 @@
 </template>
 
 <script>
-
 import Nav from '@/components/Nav.vue'
 
 export default {
@@ -73,10 +88,20 @@ export default {
   },
   data () {
     return {
+      form: {
+        name: '',
+        email: '',
+        message: ''
+      },
       img: {
         office:
           'https://hexschool-api.s3.us-west-2.amazonaws.com/custom/ToGrp5oKeNiOvFn60NseexL3mdxLc6HTYC77Oqu6dAr4QXzwdOKXvDzW7biyZkTHAc4WT4ea0mI8ESiUPJbOfCm7HwQpc42bOhdKVw5ugihTgwef0jMH896ixy1S9l4U.jpg'
       }
+    }
+  },
+  methods: {
+    contactSubmit () {
+      this.$bus.$emit('message:push', '感謝您的聯繫，我們將盡快與您聯絡！', 'success')
     }
   }
 }

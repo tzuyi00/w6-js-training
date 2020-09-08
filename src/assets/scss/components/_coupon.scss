@@ -1,6 +1,8 @@
-html, body {
+html,
+body {
   overscroll-behavior-y: contain;
 }
+
 /* == 刮刮樂區塊 == */
 .main {
   position: relative;
@@ -12,7 +14,7 @@ html, body {
   -webkit-user-select: none;
   background-color: #fff;
 
-  .award{
+  .award {
     width: 100%;
     max-width: 330px;
   }
@@ -30,25 +32,26 @@ html, body {
       color: $danger;
       text-shadow: 2px 1px 3px #eac078;
     }
-    input:focus{
+
+    input:focus {
       outline: none;
     }
   }
 }
 
-@media (max-width: 400px){
-  .main{
+@media (max-width: 400px) {
+  .main {
     height: 330px;
   }
 }
 
 /* ========== */
-.couponTitle{
+.couponTitle {
   margin-top: 120px;
 }
 
 .eggBox {
-  background-repeat :no-repeat,no-repeat;
+  background-repeat: no-repeat, no-repeat;
   background-position: bottom left, top right;
   background-color: #fff8ec;
   padding: 20px;
@@ -59,28 +62,54 @@ html, body {
     border: 2px solid $info;
     border-radius: 3px;
 
+    .h3 {
+
+      i {
+        display: inline-block;
+        color: #ffffff;
+        background-color: #c8982c;
+        padding: 12px 10px;
+        border-radius: 50%;
+        font-size: 24px;
+      }
+
+      span {
+        color: #C8982C;
+        line-height: 50px;
+      }
+    }
   }
 }
 
 @media (max-width: 991.98px) {
-  .eggBox{
+  .eggBox {
     background-size: 35%, 25%;
   }
 }
-@media (max-width: 575.98px){
-  .eggBox{
+
+@media (max-width: 575.98px) {
+  .eggBox {
     padding: 15px;
-    .primLine{
+
+    .primLine {
       padding: 20px 10px;
-      .h3{
-        font-size: 25px;
+
+      .h3 {
+        span{
+          font-size: 25px;
+        }
+        i{
+          font-size: 20px;
+        }
       }
-      .h5{
+
+      .h5 {
         font-size: 18px;
       }
     }
   }
 }
+
 .couponTitle {
   .line {
     width: 180px;
@@ -90,4 +119,3 @@ html, body {
 .couponTxt {
   max-width: 600px;
 }
-

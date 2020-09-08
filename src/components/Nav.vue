@@ -34,7 +34,7 @@
               </button>
             </router-link>
           </div>
-          <div v-if="cart.length" class="dropdown-menu dropdown-menu-right">
+          <div v-if="cart.length" class="dropdown-menu dropdown-menu-right" :class="{ none: this.$route.path === '/cart' }">
             <h5 class="itemTitle text-center my-2">已選擇商品</h5>
             <div class="cart-scroll">
               <table class="itemContent">
@@ -74,6 +74,12 @@
   </nav>
 </template>
 
+<style lang="scss">
+  .none{
+    display: none !important;
+  }
+</style>
+
 <script>
 export default {
   name: 'nav',
@@ -101,7 +107,7 @@ export default {
       const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/shopping`
 
       this.$http.get(url).then((response) => {
-        console.log('購物車', response)
+        // console.log('購物車', response)
         this.cart = response.data.data
         // 購物車金額拉出來重新計算，不然刪除時會出錯造成累加
         this.updateTotal()
@@ -126,7 +132,7 @@ export default {
         this.getCart()
         this.$bus.$emit('message:push', `"${response.data.data.product.title}" 已成功放入購物車！`, 'success')
       }).catch((error) => {
-        console.log(error.response)
+        // console.log(error.response)
         this.$bus.$emit('message:push', `${error.response.data.errors[0]}可直接去結帳囉~`, 'info')
       })
     },

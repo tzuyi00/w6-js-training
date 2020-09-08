@@ -15,7 +15,10 @@
     :style="{backgroundImage: `url(${img.disBgL}), url(${img.disBgR})` }">
       <div class="primLine">
         <div class="couponTxt text-center mx-auto">
-          <div class="h3 text-danger font-weight-bold"><i class="fas fa-glass-cheers"></i> 周年慶刮刮樂 <i class="fas fa-glass-cheers"></i></div>
+          <div class="h3 font-weight-bold">
+            <i class="fas fa-glass-cheers mr-2"></i>
+            <span>週年慶刮刮樂</span>
+          </div>
           <div class="h5 mt-3">快來玩刮刮樂遊戲！刮開你個人的專屬優惠大獎，多項折扣等你來拿，不限金額每筆訂單最高享有"五折"大優惠，數量有限送完為止，早買早享受唷！</div>
         </div>
         <!-- 刮刮樂區塊 -->
@@ -72,7 +75,8 @@ export default {
   },
   methods: {
     reload () {
-      this.$router.go(0)
+      // this.$router.go(0)
+      location.reload()
     },
     clipboard () {
       this.$bus.$emit('message:push', '已複製序號，快去購物吧！', 'success')

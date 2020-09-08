@@ -250,6 +250,7 @@
               <textarea
                 id="message"
                 name="message"
+                v-model="form.message"
                 cols="10"
                 rows="3"
                 class="form-control"
