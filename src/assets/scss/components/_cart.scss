@@ -2,7 +2,7 @@
   max-width: 960px;
 }
 
-.isCoupon{
+.isCoupon {
   border-top: none !important;
   padding-top: 0 !important;
 }
@@ -38,8 +38,9 @@
 }
 
 @media (max-width: 575.98px) {
-  .stepGroup{
+  .stepGroup {
     width: 300px;
+
     .stepBox {
       padding: 0px 15px;
     }
@@ -255,5 +256,5 @@ form.infoArea {
     background-color: $info;
     color: #ffffff;
   }
-
 }
+

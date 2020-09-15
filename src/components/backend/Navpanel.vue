@@ -1,10 +1,7 @@
 <template>
 <nav class="navpanel navpanel-fixed-left">
     <div class="navpanel-container navpanel-flex navpanel-light">
-        <div class="navpanel-brand">
-            <!-- <img class="logoImg" src="@/assets/img/logoTopLight.png" alt="logoTop" />
-            <div class="logoTxt">HomeTown</div> -->
-        </div>
+        <div class="navpanel-brand"></div>
         <div class="navpanel-body">
             <ul class="list-unstyled navpanel-nav">
                 <li>
@@ -56,7 +53,6 @@ export default {
     signout () {
       document.cookie = 'lizToken=;expires=;'
       this.$bus.$emit('message:push', '登出成功 (ゝ∀･)b', 'success')
-      // console.log('token 已清除')
       this.$router.push('/login')
     }
   }

@@ -44,8 +44,7 @@ export default {
       user: {
         email: '',
         password: ''
-      },
-      token: ''
+      }
     }
   },
   methods: {
@@ -55,7 +54,6 @@ export default {
 
       //   post將輸入的user資料送出
       this.$http.post(api, this.user).then((response) => {
-        console.log(response)
         const { token } = response.data
         const { expired } = response.data
 
@@ -65,11 +63,10 @@ export default {
         this.$bus.$emit('message:push', '登入成功 ヾ(●゜▽゜●)♡', 'success')
 
         this.$router.push('admin/products')
-      }).catch((error) => {
+      }).catch(() => {
         this.$bus.$emit('message:push',
           '登入失敗，好糗 Σ( ° △ °|||)︴ ',
           'info')
-        console.log(error.response)
       })
     }
   }

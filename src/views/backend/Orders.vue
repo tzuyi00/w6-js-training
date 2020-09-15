@@ -97,7 +97,6 @@ export default {
       const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/orders?page=${page}&paged=10`
 
       this.$http.get(url).then((response) => {
-        console.log(response)
         this.isLoading = false
         this.orders = response.data.data
         this.pagination = response.data.meta.pagination

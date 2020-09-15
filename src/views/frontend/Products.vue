@@ -78,7 +78,6 @@ export default {
       const api = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/products?page=${page}`
 
       this.$http.get(api).then((response) => {
-        console.log('getProducts', response)
         this.isLoading = false
         this.products = response.data.data // 取得產品列表
         this.newProducts = this.products
@@ -107,7 +106,6 @@ export default {
       }
     },
     updateCart (item) {
-      // console.log('updateCart', item)
       this.$bus.$emit('add-cart', item)
     }
   }

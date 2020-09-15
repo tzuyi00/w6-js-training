@@ -60,7 +60,6 @@ export default {
   },
   methods: {
     emitPages (item) {
-      // console.log('item', item)
       // 透過 emit 向外傳遞我們點的分頁並觸發外層的 getProducts
       this.$emit('emit-pages', item)
     }

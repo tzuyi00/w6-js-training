@@ -86,7 +86,6 @@ export default {
       const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/storage?page=${page}&paged=20`
 
       this.$http.get(url).then((response) => {
-        console.log(response)
         this.isLoading = false
         this.storages = response.data.data
         this.pagination = response.data.meta.pagination
@@ -99,7 +98,7 @@ export default {
           break
         }
         case 'delete': {
-          this.tempStorage = Object.assign({}, item) // 由於目前範本僅有一層物件，因此使用淺拷貝
+          this.tempStorage = Object.assign({ ...item }) // 由於目前範本僅有一層物件，因此使用淺拷貝
           $('#delModal').modal('show')
           break
         }

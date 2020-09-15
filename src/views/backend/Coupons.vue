@@ -109,7 +109,6 @@ export default {
       const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/coupons?page=${page}&paged=10`
 
       this.$http.get(url).then((response) => {
-        console.log(response)
         this.isLoading = false
         this.coupons = response.data.data
         this.pagination = response.data.meta.pagination
@@ -138,14 +137,14 @@ export default {
             $('#couponModal').modal('show')
             this.loadingBtn = '' // 清除loading畫面
           }).catch((error) => {
-            console.log(error)
+            this.$bus.$emit('message:push', `${error.response.data.message}`, 'info')
           })
 
           this.isNew = false
           break
         }
         case 'delete': {
-          this.tempCoupon = Object.assign({}, item) // 由於目前範本僅有一層物件，因此使用淺拷貝
+          this.tempCoupon = Object.assign({ ...item }) // 由於目前範本僅有一層物件，因此使用淺拷貝
           $('#delModal').modal('show')
           break
         }

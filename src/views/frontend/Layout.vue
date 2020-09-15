@@ -75,10 +75,27 @@
         </router-link>
       </div>
     </footer>
+    <div id="contactModal" class="modal fade" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body text-center">
+            <div class="h5 text-info font-weight-bold">感謝您的聯繫</div>
+            <div class="h5 text-info font-weight-bold">我們將盡快與您聯絡！</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+/* global $ */
+
 import Nav from '@/components/Nav.vue'
 
 export default {
@@ -101,7 +118,10 @@ export default {
   },
   methods: {
     contactSubmit () {
-      this.$bus.$emit('message:push', '感謝您的聯繫，我們將盡快與您聯絡！', 'success')
+      $('#contactModal').modal('show')
+      setTimeout(() => {
+        $('#contactModal').modal('hide')
+      }, 5000)
     }
   }
 }

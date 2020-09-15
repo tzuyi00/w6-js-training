@@ -73,9 +73,8 @@ export default {
         this.$bus.$emit('message:push', `${this.delName}刪除成功囉，好棒ヽ(＾Д＾)ﾉ `, 'success')
         $('#delModal').modal('hide') // 刪除成功後關閉 Modal
         this.$emit('update') // 重新取得全部資料(更新畫面)
-      }).catch((error) => {
+      }).catch(() => {
         this.isLoading = false
-        console.log(error.response.data.errors)
       })
     }
   }

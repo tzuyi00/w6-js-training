@@ -109,7 +109,6 @@ export default {
   },
   methods: {
     updateCoupon () {
-      console.log(this.isNew)
       this.isLoading = true
 
       let api = ''
@@ -146,9 +145,8 @@ export default {
             ${response.data.message}`,
             'info')
         }
-      }).catch((error) => {
+      }).catch(() => {
         this.isLoading = false
-        console.log(error.response.data.errors)
         this.$bus.$emit('message:push', '必填項目沒填唷！', 'info')
       })
     }

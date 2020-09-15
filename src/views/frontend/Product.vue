@@ -53,12 +53,39 @@
                 <i class="fas fa-plus"></i>
               </button>
             </div>
-            <button class="btn btn-info mt-4 px-3" @click="updateCart(product,productNum)">
+            <button class="addCart btn btn-info mt-4 px-3" @click="updateCart(product,productNum)">
               <i class="fa fa-shopping-cart"></i> 加入購物車
             </button>
           </div>
         </div>
       </div>
+      <div class="referPro mt-5">
+        <h4 class="text-center">相關產品</h4>
+        <div class="line mx-auto"></div>
+        <div class="row mt-5">
+          <div v-for="item in selectedProducts" :key="item.id" class="col-xl-3 col-lg-4 col-sm-6" @click="getProduct(), getRelatedProducts()">
+            <div class="productBox">
+              <router-link :to="`/product/${item.id}`">
+                <div class="top">
+                  <div class="detailBg">
+                    <div class="detailBtn">
+                      Veiw Detail
+                    </div>
+                  </div>
+                  <img :src="item.imageUrl[0]" alt />
+                </div>
+              </router-link>
+              <div class="bottom">
+                <router-link :to="`/product/${item.id}`">
+                  <h4>{{ item.title }}</h4>
+                </router-link>
+                <div class="h5 text-info">NT{{ item.price | currency }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </template>
@@ -69,8 +96,11 @@ export default {
   data () {
     return {
       isLoading: false,
+      products: [],
       product: [],
       productNum: 1,
+      relatedProducts: [],
+      selectedProducts: [],
       img: {
         banner:
           'https://hexschool-api.s3.us-west-2.amazonaws.com/custom/HYMjBNd1w2pIbmbPkhzBETIPArFvCdK1hbyk8ug7kQOcTNQQ6Htwffj3G7alDUPIW7ZnJloorvHNYWIBrv1y27DwbZtUCbaQ7ozv3QeG8TEU2HRpbbxx6ZS68xNiU5VO.jpg'
@@ -79,20 +109,56 @@ export default {
   },
   created () {
     this.isLoading = true
-    console.log('$route', this.$route.params.id)
-    const id = this.$route.params.id
-    // const { id } = this.$route.params // Airbnb es6寫法
-    this.$http
-      .get(
-        `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/product/${id}`
-      )
-      .then((response) => {
-        this.isLoading = false
-        console.log(response)
-        this.product = response.data.data
-      })
+
+    const api = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/products?page=1`
+
+    this.$http.get(api).then((response) => {
+      this.isLoading = false
+      this.products = response.data.data // 取得產品列表
+    })
+
+    this.getProduct()
+    this.getRelatedProducts()
   },
   methods: {
+    getProduct () {
+      const id = this.$route.params.id
+      // const { id } = this.$route.params // Airbnb es6寫法
+      const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/product/${id}`
+      this.$http
+        .get(url).then((response) => {
+          this.isLoading = false
+          this.product = response.data.data
+        })
+    },
+    getRelatedProducts () {
+      this.relatedProducts = []
+      this.selectedProducts = []
+      const id = this.$route.params.id
+      const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/product/${id}`
+      this.isLoading = true
+      this.$http.get(url).then(response => {
+        this.products.forEach(product => {
+          // products內產品的種類=此產品種類 && 排除此產品
+          if (product.category === response.data.data.category && product.id !== id) {
+            this.relatedProducts.push(product)
+          }
+        })
+        if (this.relatedProducts.length > 4) {
+          for (let i = 0; i < 4; i++) { // 選四個相關產品
+            let num = Math.random() * this.relatedProducts.length // 取得區間內亂數
+            num = Math.floor(num) // 小於等於所給數字的最大整數
+            this.selectedProducts.push(this.relatedProducts[num]) // 將 relatedProduct 的第 num 個放入 selectedProducts
+            this.relatedProducts.splice(num, 1) // 須同時除掉 relatedProduct 的第 num 個，以免重複
+          }
+        } else {
+          this.selectedProducts = this.relatedProducts
+        }
+        this.isLoading = false
+      }).catch(() => {
+        this.isLoading = false
+      })
+    },
     // 點擊 + - 按鈕做數量判斷
     changeQty (num) {
       const qty = this.productNum + num

@@ -1,9 +1,9 @@
 <template>
-<div class="">
+<div>
   <loading :active.sync="isLoading"></loading>
   <div class="d-flex mb-2">
       <h1 class="h5 mr-auto font-weight-bold">產品列表</h1>
-      <div class="">
+      <div>
         <button @click="openModal('new')" class="btn btn-sm btn-outline-dark px-5 font-weight-bold"><i class="fas fa-plus mr-1"></i>新增產品</button>
       </div>
   </div>
@@ -116,7 +116,6 @@ export default {
       const api = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/products?page=${page}&paged=20`
 
       this.$http.get(api).then((response) => {
-        console.log(response)
         this.isLoading = false
         this.products = response.data.data // 取得產品列表
         this.pagination = response.data.meta.pagination // 取得分頁資訊
@@ -137,14 +136,13 @@ export default {
             this.tempProduct = res.data.data // 取得成功後回寫到 tempProduct
             $('#productModal').modal('show') // 確保資料已經回寫後再打開 Modal
             this.loadingBtn = '' // 清除loading畫面
-          }).catch((error) => {
-            console.log(error)
+          }).catch(() => {
           })
           this.isNew = false// 切換狀態為 false 代表編輯
           break
         }
         case 'delete': {
-          this.tempProduct = Object.assign({}, item) // 由於目前範本僅有一層物件，因此使用淺拷貝
+          this.tempProduct = Object.assign({ ...item }) // 由於目前範本僅有一層物件，因此使用淺拷貝
           $('#delModal').modal('show')
           break
         }

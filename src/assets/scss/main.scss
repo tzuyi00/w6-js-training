@@ -64,12 +64,25 @@ a:hover{
   text-decoration: none;
 }
 
+.none{
+  display: none !important;
+}
+
 .title{
   font-family: 'Marcellus SC',serif;
 }
 
+.line{
+  height: 5px;
+  background-color: $primary;
+}
+
 .bg-main-bg {
   background-color: $egg !important;
+}
+
+.ml2{
+  margin-left: 0.5rem;
 }
 
 .hide-navpanel-btn {
@@ -89,11 +102,22 @@ a:hover{
   }
 }
 
-.line{
-  height: 5px;
-  background-color: $primary;
-}
-
 .breadcrumb{
   background-color: transparent;
+}
+
+.modal {
+  .modal-content {
+    border: none;
+
+    .modal-header {
+      padding: 0.5rem 1rem;
+      border-bottom: none;
+      background-color: $info;
+      button.close{
+        color: #ffffff;
+        opacity: 1;
+      }
+    }
+  }
 }

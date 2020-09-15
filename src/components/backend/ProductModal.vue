@@ -134,7 +134,6 @@ export default {
   },
   methods: {
     updateProduct () {
-      console.log(this.isNew)
       this.isLoading = true
 
       let api = ''
@@ -155,7 +154,6 @@ export default {
 
       // 用 httpMethod 帶入是用post還是patch
       this.$http[httpMethod](api, this.tempProduct).then((response) => {
-        console.log(response)
         this.isLoading = false
         $('#productModal').modal('hide')
 
@@ -168,9 +166,8 @@ export default {
             ${response.data.message}`,
             'info')
         }
-      }).catch((error) => {
+      }).catch(() => {
         this.isLoading = false
-        console.log(error.response.data.errors)
         this.$bus.$emit('message:push', '必填項目沒填唷！', 'info')
       })
     },
@@ -197,7 +194,7 @@ export default {
           this.tempProduct.imageUrl.push(response.data.data.path)
         }
       }).catch(() => {
-        console.log('上傳不可超過 2 MB')
+        this.$bus.$emit('message:push', '上傳不可超過 2 MB', 'info')
         this.status.fileUploading = false
       })
     }

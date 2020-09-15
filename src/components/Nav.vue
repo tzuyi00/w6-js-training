@@ -22,9 +22,10 @@
       </ul>
       <ul class="navbar-nav">
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown">
-            <i class="fa fa-shopping-cart"></i>
+          <a class="nav-link dropdown-toggle text-center" href="#" id="navbarDropdown" data-toggle="dropdown">
+            <i class="fa fa-shopping-cart" :class="{ ml2: cart.length >= '1' }"></i>
             <span class="badge badge-pill badge-danger" v-if="cart.length">{{cart.length}}</span>
+            <span class="d-block d-sm-none">購物車</span>
           </a>
           <div v-if="!cart.length" class="dropdown-menu dropdown-menu-right text-center">
             <h5 class="itemTitle my-2">您尚未選擇商品</h5>
@@ -74,12 +75,6 @@
   </nav>
 </template>
 
-<style lang="scss">
-  .none{
-    display: none !important;
-  }
-</style>
-
 <script>
 export default {
   name: 'nav',
@@ -90,7 +85,6 @@ export default {
       cartTotal: 0
     }
   },
-  props: {},
   created () {
     this.getCart()
     const vm = this
@@ -107,7 +101,6 @@ export default {
       const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/shopping`
 
       this.$http.get(url).then((response) => {
-        // console.log('購物車', response)
         this.cart = response.data.data
         // 購物車金額拉出來重新計算，不然刪除時會出錯造成累加
         this.updateTotal()
@@ -132,7 +125,6 @@ export default {
         this.getCart()
         this.$bus.$emit('message:push', `"${response.data.data.product.title}" 已成功放入購物車！`, 'success')
       }).catch((error) => {
-        // console.log(error.response)
         this.$bus.$emit('message:push', `${error.response.data.errors[0]}可直接去結帳囉~`, 'info')
       })
     },
@@ -146,6 +138,11 @@ export default {
         this.getCart()
       })
     }
+  },
+  beforeDestroy: function () {
+    // 元件銷毀前要註銷監聽事件
+    this.$bus.$off('add-cart')
+    this.$bus.$off('nav-getCart')
   }
 }
 </script>

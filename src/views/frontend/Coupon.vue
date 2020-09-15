@@ -1,11 +1,5 @@
 <template>
   <div>
-    <!-- <div class="banner" :style="{backgroundImage: `url(${img.banner})` }">
-      <div class="bannerTitle">
-        <h1>優惠活動</h1>
-      </div>
-    </div> -->
-
     <div class="couponTitle">
       <h2 class="title text-center">anniversary sale</h2>
       <div class="line mx-auto"></div>
@@ -62,9 +56,9 @@ export default {
         banner:
           'https://hexschool-api.s3.us-west-2.amazonaws.com/custom/HYMjBNd1w2pIbmbPkhzBETIPArFvCdK1hbyk8ug7kQOcTNQQ6Htwffj3G7alDUPIW7ZnJloorvHNYWIBrv1y27DwbZtUCbaQ7ozv3QeG8TEU2HRpbbxx6ZS68xNiU5VO.jpg',
         disBgL:
-          require('../../assets/img/disBgL.png'),
+          require('@/assets/img/disBgL.png'),
         disBgR:
-          require('../../assets/img/disBgR.png')
+          require('@/assets/img/disBgR.png')
       }
     }
   },

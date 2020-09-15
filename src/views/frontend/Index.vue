@@ -193,10 +193,6 @@ export default {
       }
     }
   },
-  created () {},
-  mounted () {
-    // new WOW().init()
-  },
   methods: {
     arrowDown () {
       $('body,html').animate(

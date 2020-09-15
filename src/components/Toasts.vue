@@ -78,6 +78,10 @@ export default {
     closeToast (element) { // 隱藏toast
       $(`#${element}`).toast('hide')
     }
+  },
+  beforeDestroy: function () {
+    // 元件銷毀前要註銷監聽事件
+    this.$bus.$off('message:push')
   }
 }
 </script>

@@ -96,10 +96,28 @@
         </button>
       </router-link>
     </div>
+
+    <div id="paymentModal" class="modal fade" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body text-center">
+            <div class="h5 text-info font-weight-bold">恭喜您</div>
+            <div class="h5 text-info font-weight-bold">付款成功</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+/* global $ */
+
 export default {
   name: 'payment',
   data () {
@@ -131,7 +149,6 @@ export default {
       const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/orders/${id}`
 
       this.$http.get(url).then((response) => {
-        // console.log(response.data.data)
         this.order = response.data.data
         this.isLoading = false
       })
@@ -142,7 +159,11 @@ export default {
       const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/orders/${this.orderId}/paying`
 
       this.$http.post(url).then((response) => {
-        this.$bus.$emit('message:push', '恭喜您，已完成付款！', 'success')
+        $('#paymentModal').modal('show')
+        setTimeout(() => {
+          $('#paymentModal').modal('hide')
+        }, 5000)
+
         // 如果成功true，重跑頁面
         if (response.data.data.paid) {
           this.getDetailed(this.orderId)

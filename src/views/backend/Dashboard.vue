@@ -66,19 +66,16 @@ export default {
         .then((res) => {
           this.isLoading = false
           // 登入沒有問題
-          console.log(res)
           this.checkSuccess = true
         })
-        .catch((error) => {
+        .catch(() => {
           this.isLoading = false
-          console.log('error', error.response)
           // 驗證失敗，返回登入頁，內層不需再重複驗證
           this.$router.push('/login')
         })
     },
     signout () {
       document.cookie = 'lizToken=;expires=;'
-      console.log('token 已清除')
       this.$router.push('/login')
     }
   }

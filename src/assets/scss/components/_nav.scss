@@ -33,15 +33,18 @@
   }
 
   @media (max-width: 575.98px) {
-    .navbar-brand{
+    .navbar-brand {
       margin-right: 0;
+
       img.logoImg {
         width: 50px;
       }
-      .logoTxt{
+
+      .logoTxt {
         font-size: 18px;
       }
     }
+
     ul.objs {
       span {
         font-size: 14px;
@@ -53,6 +56,20 @@
   .dropdown {
     .dropdown-toggle::after {
       display: none;
+    }
+
+    .dropdown-toggle {
+      span{
+        font-size: 14px;
+      }
+      .badge {
+        transform: translateX(-6px) translateY(-7px);
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        padding: 3px;
+      }
     }
 
     .dropdown-menu {

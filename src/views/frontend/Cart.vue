@@ -313,7 +313,6 @@ export default {
       const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/shopping`
 
       this.$http.get(url).then((response) => {
-        // console.log('購物車', response)
         this.cart = response.data.data
         // 購物車金額拉出來重新計算，不然刪除時會出錯造成累加
         this.updateTotal()

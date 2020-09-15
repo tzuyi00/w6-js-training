@@ -69,7 +69,6 @@ export default {
         }
       }).then((response) => {
         this.fileUploading = false
-        console.log(response)
         // 200上傳成功
         if (response.status === 200) {
           this.$emit('update') // 更新畫面
@@ -81,9 +80,8 @@ export default {
             ${response.data.message}`,
             'info')
         }
-      }).catch((error) => {
+      }).catch(() => {
         this.fileUploading = false
-        console.log(error.response.data.errors)
         this.$bus.$emit('message:push', '上傳不可超過 2 MB', 'info')
       })
     }
