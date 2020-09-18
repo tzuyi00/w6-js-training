@@ -106,7 +106,6 @@ export default {
       delName: '商品'
     }
   },
-  props: ['token-receive'], // 用props將外層的token帶入
   created () {
     this.isLoading = true
     this.getProducts()

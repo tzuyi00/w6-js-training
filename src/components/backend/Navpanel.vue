@@ -34,7 +34,7 @@
         <footer class="navpanel-footer border-top">
             <div>
                 <a href="#" @click.prevent="signout">
-                    <img src="../../assets/logout.svg" width="25">
+                    <img src="@/assets/logout.svg" width="25">
                 </a>
             </div>
         </footer>

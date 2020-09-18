@@ -97,7 +97,7 @@ export default {
     return {
       isLoading: false,
       products: [],
-      product: [],
+      product: { imageUrl: [] },
       productNum: 1,
       relatedProducts: [],
       selectedProducts: [],

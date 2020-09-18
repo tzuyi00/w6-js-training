@@ -22,12 +22,12 @@
       </ul>
       <ul class="navbar-nav">
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-center" href="#" id="navbarDropdown" data-toggle="dropdown">
+          <a class="nav-link dropdown-toggle text-center" href="#" id="navbarDropdown" :data-toggle="$route.path !== '/cart' ? 'dropdown' : ''">
             <i class="fa fa-shopping-cart" :class="{ ml2: cart.length >= '1' }"></i>
             <span class="badge badge-pill badge-danger" v-if="cart.length">{{cart.length}}</span>
             <span class="d-block d-sm-none">購物車</span>
           </a>
-          <div v-if="!cart.length" class="dropdown-menu dropdown-menu-right text-center">
+          <div v-if="!cart.length && $route.path !== '/cart'" class="dropdown-menu dropdown-menu-right text-center">
             <h5 class="itemTitle my-2">您尚未選擇商品</h5>
             <router-link to="/products" class="">
               <button class="btn btn-info mt-1">
@@ -35,7 +35,7 @@
               </button>
             </router-link>
           </div>
-          <div v-if="cart.length" class="dropdown-menu dropdown-menu-right" :class="{ none: this.$route.path === '/cart' }">
+          <div v-show="cart.length && $route.path !== '/cart'" class="dropdown-menu dropdown-menu-right">
             <h5 class="itemTitle text-center my-2">已選擇商品</h5>
             <div class="cart-scroll">
               <table class="itemContent">
@@ -77,7 +77,7 @@
 
 <script>
 export default {
-  name: 'nav',
+  name: 'Nav',
   data () {
     return {
       isLoading: false,
