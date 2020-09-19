@@ -43,7 +43,7 @@ https://tzuyi00.github.io/HomeTown/
   * 訂單管理 - 查看、修改訂單
   * 圖片管理 - 新增、刪除圖片
   
-
+![首頁](https://user-images.githubusercontent.com/42172767/93668535-5f224380-fabf-11ea-9329-7b2fe0d091e9.gif)
 
 ## Project setup
 ```
