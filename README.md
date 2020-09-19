@@ -66,6 +66,7 @@ https://tzuyi00.github.io/HomeTown/
 ### 優惠活動
 * 使用 Canvas 實現刮刮樂效果
 * 內有三種獎項做隨機顯示
+* 可重複抽獎也可複製優惠碼
 
 ![優惠活動](https://user-images.githubusercontent.com/42172767/93671380-1bd2cf80-fad5-11ea-88cf-a52c3abde9e2.gif)
 
