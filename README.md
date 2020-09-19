@@ -23,11 +23,11 @@ https://tzuyi00.github.io/HomeTown/
 * [vue-loading-overlay](https://www.npmjs.com/package/vue-loading-overlay)
 * [vee-validate](https://www.npmjs.com/package/vee-validate)
 * [bootstrap 4](https://getbootstrap.com/)
+* [wow.js](https://wowjs.uk/docs.html)
 * [Google Font](https://fonts.google.com/)
 * [Font Awesome](https://fontawesome.com/)
 
-## 網頁介紹
-### 基本架構
+## 網頁架構
 練習以 Vue.js 實作購物網站，功能區分為前、後台：
 * 前台
   * 首頁 - 關於我們簡介、產品導覽
@@ -43,7 +43,21 @@ https://tzuyi00.github.io/HomeTown/
   * 訂單管理 - 查看、修改訂單
   * 圖片管理 - 新增、刪除圖片
   
+## 頁面介紹
+### 首頁
+* 關於我們簡介、產品導覽
+* 使用 wow.js 製作動畫效果
+
 ![首頁](https://user-images.githubusercontent.com/42172767/93668535-5f224380-fabf-11ea-9329-7b2fe0d091e9.gif)
+
+## 產品列表
+* 切換分類、加入購物車
+* 右上角購物車可直接做刪除的動作
+
+![產品列表](https://user-images.githubusercontent.com/42172767/93671039-5dae4680-fad2-11ea-94a3-9efb95d9bfd5.gif)
+
+
+
 
 ## Project setup
 ```
