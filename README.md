@@ -49,7 +49,6 @@ https://tzuyi00.github.io/HomeTown/
 * 關於我們簡介、產品導覽
 * 使用 wow.js 製作動畫效果
 
-![首頁](https://user-images.githubusercontent.com/42172767/93668535-5f224380-fabf-11ea-9329-7b2fe0d091e9.gif)
 ![首頁](https://user-images.githubusercontent.com/42172767/93671806-acf77580-fad8-11ea-8561-b982dccafa93.gif)
 
 
