@@ -22,51 +22,60 @@
       </ul>
       <ul class="navbar-nav">
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-center" href="#" id="navbarDropdown" :data-toggle="$route.path !== '/cart' ? 'dropdown' : ''">
+          <a
+            class="nav-link dropdown-toggle text-center"
+            href="#"
+            id="navbarDropdown"
+            :data-toggle="$route.path !== '/cart' ? 'dropdown' : ''"
+          >
             <i class="fa fa-shopping-cart" :class="{ ml2: cart.length >= '1' }"></i>
             <span class="badge badge-pill badge-danger" v-if="cart.length">{{cart.length}}</span>
             <span class="d-block d-sm-none">購物車</span>
           </a>
-          <div v-if="!cart.length && $route.path !== '/cart'" class="dropdown-menu dropdown-menu-right text-center">
-            <h5 class="itemTitle my-2">您尚未選擇商品</h5>
-            <router-link to="/products" class="">
-              <button class="btn btn-info mt-1">
-                <i class="fas fa-couch"></i> 先去選購吧
-              </button>
-            </router-link>
-          </div>
-          <div v-show="cart.length && $route.path !== '/cart'" class="dropdown-menu dropdown-menu-right">
-            <h5 class="itemTitle text-center my-2">已選擇商品</h5>
-            <div class="cart-scroll">
-              <table class="itemContent">
-                <tbody class="d-flex justify-content-start align-items-center flex-column">
-                  <tr v-for="item in cart" :key="item.id">
-                    <td class="itemPicture">
-                      <img
-                        :src="item.product.imageUrl[0]"
-                        alt
-                      />
-                    </td>
-                    <td class="itemName">{{ item.product.title }}</td>
-                    <td>x{{ item.quantity }}</td>
-                    <td class="text-info">{{ item.product.price | currency }}</td>
-                    <td class="trashIcon" @click="removeCartItem(item.product.id)">
-                      <i class="far fa-trash-alt"></i>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="totalInfo">
-              <p>
-                小計
-                <span class="text-info h4 ml-5">{{ cartTotal | currency }}</span>
-              </p>
-              <router-link to="/cart" class="payBtn">
-                <button class="btn btn-info">
-                  <i class="fa fa-shopping-cart"></i> 結帳去
+          <div
+            class="dropdown-menu dropdown-menu-right text-center"
+            v-show="$route.path !== '/cart'"
+          >
+            <!-- 未購物 -->
+            <div v-if="!cart.length ">
+              <h5 class="itemTitle my-2">您尚未選擇商品</h5>
+              <router-link to="/products" class>
+                <button class="btn btn-info mt-1">
+                  <i class="fas fa-couch"></i> 先去選購吧
                 </button>
               </router-link>
+            </div>
+            <!-- 有商品 -->
+            <div v-if="cart.length">
+              <h5 class="itemTitle text-center my-2">已選擇商品</h5>
+              <div class="cart-scroll">
+                <table class="itemContent">
+                  <tbody class="d-flex justify-content-start align-items-center flex-column">
+                    <tr v-for="item in cart" :key="item.id">
+                      <td class="itemPicture">
+                        <img :src="item.product.imageUrl[0]" alt />
+                      </td>
+                      <td class="itemName">{{ item.product.title }}</td>
+                      <td>x{{ item.quantity }}</td>
+                      <td class="text-info">{{ item.product.price | currency }}</td>
+                      <td class="trashIcon" @click="removeCartItem(item.product.id)">
+                        <i class="far fa-trash-alt"></i>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="totalInfo">
+                <p>
+                  小計
+                  <span class="text-info h4 ml-5">{{ cartTotal | currency }}</span>
+                </p>
+                <router-link to="/cart" class="payBtn">
+                  <button class="btn btn-info">
+                    <i class="fa fa-shopping-cart"></i> 結帳去
+                  </button>
+                </router-link>
+              </div>
             </div>
           </div>
         </li>
