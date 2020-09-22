@@ -1,5 +1,5 @@
 # HomeTown Furniture
-![index](https://user-images.githubusercontent.com/42172767/93880735-86bc1a80-fd10-11ea-830a-f3c5853fd0ca.jpg)
+![index](https://user-images.githubusercontent.com/42172767/93883609-62623d00-fd14-11ea-8c4b-34e180ecba08.jpg)
 
 ## Demo
 https://tzuyi00.github.io/HomeTown/
@@ -30,7 +30,7 @@ https://tzuyi00.github.io/HomeTown/
 * [Font Awesome](https://fontawesome.com/)
 
 ## 網頁架構
-以 Vue.js 實作購物網站，功能區分為前、後台：
+以 Vue.js 實作模擬購物網站，功能區分為前、後台：
 * 前台
   * 首頁 - 關於我們簡介、產品導覽
   * 產品列表 - 切換分類、加入購物車
