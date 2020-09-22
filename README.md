@@ -5,7 +5,7 @@
 https://tzuyi00.github.io/HomeTown/
 
 ## 使用技術
-* Vue Cli
+* Vue CLI
 * Vue Router
 * Vue Components
 * Webpack
