@@ -1,4 +1,5 @@
 # HomeTown Furniture
+![index](https://user-images.githubusercontent.com/42172767/93880735-86bc1a80-fd10-11ea-830a-f3c5853fd0ca.jpg)
 ![](https://user-images.githubusercontent.com/42172767/93662133-4a7a8700-fa90-11ea-9c50-d1078e4ce5e9.jpg)
 
 ## Demo
