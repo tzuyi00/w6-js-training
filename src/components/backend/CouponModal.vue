@@ -10,7 +10,7 @@
   <loading :active.sync="isLoading"></loading>
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <div class="modal-header">
+        <div class="modal-header bg-dark text-white">
           <h5 id="exampleModalLabel" class="modal-title">建立優惠券</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>

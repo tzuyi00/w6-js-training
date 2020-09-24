@@ -70,8 +70,8 @@
       </div>
       <div class="container underLine py-2 text-center">
         HomeTown Designed by Liz.Lin ⓒ 2020 All Right Reserved. ｜僅個人作品練習，無商業用途
-        <router-link to="/login">
-          <i class="fas fa-user-cog"></i>
+        <router-link to="/login" class="mx-3">
+          <i class="fas fa-user-cog"></i> <u>前往後台</u>
         </router-link>
       </div>
     </footer>
